@@ -15,7 +15,13 @@ class DioServiceImpl implements DioClient {
       ..options.receiveTimeout = const Duration(
         seconds: ApiConstants.receiveTimeoutInMs,
       )
-      ..interceptors.add(PrettyDioLogger());
+      ..interceptors.add(
+        PrettyDioLogger(
+          requestBody: true,
+          requestHeader: true,
+          responseHeader: true,
+        ),
+      );
   }
 
   /// Dio instance

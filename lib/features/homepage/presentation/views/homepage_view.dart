@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_dynamic_calls
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemondb/core/core.dart';
 
@@ -12,18 +15,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String image = '';
+
   Future<void> _incrementCounter() async {
     /// DioService
-    final DioServiceImpl dioService = locator();
+    final DioClient dioService = locator();
 
-    await dioService.get();
+    final Response<dynamic> response = await dioService.get(
+      'cards',
+      queryParameters: <String, dynamic>{'pageSize': 1},
+    );
   }
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        body: const Center(
-          child: Text(
-            'Flutter Tester App',
+        body: DecoratedBox(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              opacity: 0.3,
+              image: AssetImage(
+                AppAssets.pokemonBackground,
+              ),
+            ),
+          ),
+          child: Center(
+            child: ImageView(imagePath: image),
           ),
         ),
         floatingActionButton: FloatingActionButton(
