@@ -192,7 +192,6 @@ linter:
   - unnecessary_new
   - unnecessary_library_directive
   - unnecessary_late
-  - unnecessary_lambdas
   - unnecessary_getters_setters
   - unnecessary_constructor_name
   - unnecessary_const
@@ -415,7 +414,6 @@ analyzer:
    unnecessary_new: error
    unnecessary_library_directive: error
    unnecessary_late: error
-   unnecessary_lambdas: error
    unnecessary_getters_setters: error
    unnecessary_constructor_name: error
    unnecessary_const: error

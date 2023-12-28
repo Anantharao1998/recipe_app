@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
-void main() {
+void main() async {
+  // init dependency injection
+  await init();
+
   runApp(const MyApp());
 }
 

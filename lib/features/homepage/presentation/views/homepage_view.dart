@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokemondb/core/core.dart';
 
 /// MyHomePage
 class MyHomePage extends StatefulWidget {
@@ -11,32 +12,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Future<void> _incrementCounter() async {
+    /// DioService
+    final DioServiceImpl dioService = locator();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    await dioService.get();
   }
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Counter App'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
+        body: const Center(
+          child: Text(
+            'Flutter Tester App',
           ),
         ),
         floatingActionButton: FloatingActionButton(
