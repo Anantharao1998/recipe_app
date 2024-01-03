@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/dependency_injection.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
 void main() async {
@@ -20,6 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: const MyHomePage(),
+        home: MyHomePage(getPokemonList: locator()),
       );
 }

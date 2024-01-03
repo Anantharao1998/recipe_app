@@ -1,14 +1,17 @@
 // ignore_for_file: avoid_dynamic_calls
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/features/homepage/domain/entities/get_pokemon_list.dart';
 
 /// MyHomePage
 class MyHomePage extends StatefulWidget {
   /// MyHomePage
 
-  const MyHomePage({super.key});
+  const MyHomePage({required this.getPokemonList, super.key});
+
+  /// GetPokemonList instance
+  final GetPokemonList getPokemonList;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -18,13 +21,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String image = '';
 
   Future<void> _incrementCounter() async {
-    /// DioService
-    final DioClient dioService = locator();
+    final List<PokemonCard> test = await widget.getPokemonList.call();
 
-    final Response<dynamic> response = await dioService.get(
-      'cards',
-      queryParameters: <String, dynamic>{'pageSize': 1},
-    );
+    debugPrint(test.toString());
   }
 
   @override
