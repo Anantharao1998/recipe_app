@@ -6,8 +6,11 @@ import 'package:pokemondb/features/homepage/homepage.dart';
 void homeBindings(final GetIt getIt) {
   getIt
 
+    /// register datasource
+    ..registerFactory<HomeRemoteDataSource>(() => HomeRemoteDataSourceImpl())
+
     /// register repository
-    ..registerFactory<HomeRepository>(() => HomeRepositoryImpl())
+    ..registerFactory<HomeRepository>(() => HomeRepositoryImpl(remoteDataSource: locator()))
 
     /// Register usecases
     ..registerFactory<GetPokemonList>(

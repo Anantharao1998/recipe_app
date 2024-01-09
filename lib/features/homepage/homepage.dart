@@ -1,3 +1,4 @@
+export 'data/datasources/remote_datasources.dart';
 export 'data/repositories/home_repository_impl.dart';
 export 'domain/entities/get_pokemon_list.dart';
 export 'domain/repositories/home_repositories.dart';

@@ -19,9 +19,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String image = '';
+  final List<PokemonCard> test = <PokemonCard>[];
 
   Future<void> _incrementCounter() async {
-    final List<PokemonCard> test = await widget.getPokemonList.call();
+    test.addAll(await widget.getPokemonList.call());
 
     debugPrint(test.toString());
   }
@@ -38,8 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          child: Center(
-            child: ImageView(imagePath: image),
+          child: SingleChildScrollView(
+            child: Text(test.toString()),
           ),
         ),
         floatingActionButton: FloatingActionButton(
