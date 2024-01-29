@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/homepage/domain/entities/get_pokemon_list.dart';
+import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// MyHomePage
 class MyHomePage extends StatefulWidget {
@@ -29,7 +29,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(final BuildContext context) => Scaffold(
-        body: DecoratedBox(
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.fill,
@@ -39,8 +41,21 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          child: SingleChildScrollView(
-            child: Text(test.toString()),
+          child: const SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: kToolbarHeight,
+                ),
+                GoalsTile(
+                  dailyGoalEntity: DailyGoalEntity(
+                    totalAppointmentCompleted: 20,
+                    totalAppointmentFixed: 20,
+                    totalProspect: 20,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
