@@ -5,6 +5,7 @@ export 'constants/api_constants.dart';
 export 'constants/app_assets.dart';
 export 'constants/app_colors.dart';
 export 'constants/app_strings.dart';
+export 'constants/app_styles.dart';
 export 'constants/app_values.dart';
 export 'data/models/pokemon_card_model.dart';
 export 'domain/entities/card.dart';

@@ -58,21 +58,43 @@ class TargetBox extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width - AppValues.double_50;
 
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          AppValues.double_10,
+        ),
+        color: AppColors.targetBoxColor,
+      ),
       width: screenWidth / 3,
-      color: AppColors.targetBoxColor,
+      padding: const EdgeInsets.all(AppValues.double_10),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
-              Text(minValue.toString()),
-              const Text('/'),
-              Text(maxValue.toString()),
+              Text(
+                minValue.toString(),
+                style: AppStyles.targetBoxStyle,
+              ),
+              Text(
+                ' / ',
+                style: AppStyles.targetBoxStyle.copyWith(
+                  fontSize: AppValues.double_25,
+                ),
+              ),
+              Text(
+                maxValue.toString(),
+                style: AppStyles.targetBoxStyle.copyWith(fontSize: AppValues.double_15),
+              ),
             ],
           ),
           const SizedBox(
             height: AppValues.double_10,
           ),
-          Text(boxTitle),
+          Text(
+            boxTitle,
+            style: AppStyles.targetBoxStyle.copyWith(fontSize: AppValues.double_10),
+          ),
         ],
       ),
     );

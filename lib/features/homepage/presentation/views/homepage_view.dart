@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
               fit: BoxFit.fill,
               opacity: 0.3,
               image: AssetImage(
-                AppAssets.pokemonBackground,
+                AppAssets.backgroundImage,
               ),
             ),
           ),
