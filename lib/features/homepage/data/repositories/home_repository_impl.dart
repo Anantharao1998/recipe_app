@@ -10,16 +10,8 @@ class HomeRepositoryImpl implements HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
 
   @override
-  void fetchAccountDetails() {
-    // TODO: implement fetchAccountDetails
-  }
+  void fetchAccountDetails() => throw UnimplementedError();
 
   @override
-  Future<List<PokemonCard>> fetchAllPokemonCards() async {
-    try {
-      return remoteDataSource.fetchPokemonCards();
-    } on Exception catch (error) {
-      throw UnimplementedError(error.toString());
-    }
-  }
+  Future<List<PokemonCard>> fetchAllPokemonCards() => throw UnimplementedError();
 }

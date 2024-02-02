@@ -1,13 +1,12 @@
-/// AppStrings class
+// ignore_for_file: public_member_api_docs
+
 class AppStrings {
   AppStrings._();
 
-  /// Dashboard
   static const String dashboard = 'Dashboard';
-
-  /// Today's Goals
   static const String todayGoals = "Today's Goals";
-
-  /// Today's total prospect added
-  static const String todaysTotalProspect = "Today's total prospect";
+  static const String totalAppointmentCompleted = 'Total Completed Appointments';
+  static const String totalAppointmentsMade = 'Total Appointments Made';
+  static const String totalProspect = 'Total Guests Connected';
+  static const String todayEvents = "Today's Event";
 }

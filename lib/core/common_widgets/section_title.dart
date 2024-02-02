@@ -1,26 +1,44 @@
-import 'package:flutter/material.dart';
 import 'package:pokemondb/core/core.dart';
 
 /// Common Section Title widget
 class SectionTitle extends StatelessWidget {
   /// Common Section Title widget
-  const SectionTitle({required this.title, this.subtitle, super.key});
+  const SectionTitle({this.title, this.subtitle, this.onPressed, super.key});
+
+  /// OnPressed button for (+).
+  final Function()? onPressed;
 
   /// Section subtitle
   final String? subtitle;
 
   /// Section title
-  final String title;
+  final String? title;
 
   @override
   Widget build(final BuildContext context) => Padding(
         padding: const EdgeInsets.all(AppValues.double_10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: <Widget>[
-            Text(title),
-            if (subtitle != null) Text(subtitle!),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (title != null)
+                  Text(
+                    title!,
+                    style: AppStyles.h4,
+                  ),
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    style: AppStyles.h5.copyWith(
+                      fontSize: AppValues.double_15,
+                    ),
+                  ),
+              ],
+            ),
+            const Spacer(),
+            if (onPressed != null) IconButton(onPressed: onPressed, icon: const Icon(Icons.add_sharp)),
           ],
         ),
       );

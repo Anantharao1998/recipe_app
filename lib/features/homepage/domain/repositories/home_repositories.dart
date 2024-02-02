@@ -1,4 +1,5 @@
 import 'package:pokemondb/core/core.dart';
+// TODO [Anantha]: delete unnecessary methods
 
 /// HomeRepository
 abstract class HomeRepository {

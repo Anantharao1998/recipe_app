@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  static const Color targetBoxColor = Colors.cyan;
-  static const Color white = Colors.white;
+  static const Color blackPrimary = Colors.black;
+  static const Color cyanPrimary = Colors.cyan;
+  static const Color whitePrimary = Colors.white;
 }

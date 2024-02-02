@@ -10,10 +10,5 @@ void homeBindings(final GetIt getIt) {
     ..registerFactory<HomeRemoteDataSource>(() => HomeRemoteDataSourceImpl())
 
     /// register repository
-    ..registerFactory<HomeRepository>(() => HomeRepositoryImpl(remoteDataSource: locator()))
-
-    /// Register usecases
-    ..registerFactory<GetPokemonList>(
-      () => GetPokemonList(repository: locator()),
-    );
+    ..registerFactory<HomeRepository>(() => HomeRepositoryImpl(remoteDataSource: locator()));
 }

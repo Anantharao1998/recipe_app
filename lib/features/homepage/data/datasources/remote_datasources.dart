@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/dependency_injection.dart';
+// TODO [Anantha]: Remove unnecessary methods
 
 /// HomeRemoteDataSource
 abstract class HomeRemoteDataSource {
@@ -17,9 +18,7 @@ abstract class HomeRemoteDataSource {
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
-  void fetchAccountDetails() {
-    // TODO: implement fetchAccountDetails
-  }
+  void fetchAccountDetails() => throw UnimplementedError();
 
   @override
   Future<List<PokemonCardModel>> fetchPokemonCards() async {

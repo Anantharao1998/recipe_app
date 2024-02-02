@@ -1,3 +1,4 @@
+export 'package:flutter/material.dart';
 export 'base/base_usecase.dart';
 export 'common_widgets/asset_image_view.dart';
 export 'common_widgets/section_title.dart';
@@ -9,6 +10,8 @@ export 'constants/app_styles.dart';
 export 'constants/app_values.dart';
 export 'data/models/pokemon_card_model.dart';
 export 'domain/entities/card.dart';
+export 'extensions/datetime_extension.dart';
+export 'extensions/textstyle_extension.dart';
 export 'services/dio/dio_service.dart';
 export 'services/dio/dio_service_impl.dart';
 export 'services/interceptors/auth_interceptors.dart';

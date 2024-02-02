@@ -20,6 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: MyHomePage(getPokemonList: locator()),
+        home: const MyHomePage(),
       );
 }

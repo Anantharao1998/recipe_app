@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
@@ -14,22 +13,26 @@ class GoalsTile extends StatelessWidget {
   Widget build(final BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SectionTitle(title: AppStrings.todayGoals),
+          SectionTitle(
+            title: AppStrings.todayGoals,
+            subtitle: DateTime.now().ddMMyyyy(),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               TargetBox(
-                boxTitle: AppStrings.todaysTotalProspect,
+                boxTitle: AppStrings.totalProspect,
                 maxValue: dailyGoalEntity.totalProspect,
                 minValue: dailyGoalEntity.currentProspect ?? 0,
               ),
               TargetBox(
-                boxTitle: AppStrings.todaysTotalProspect,
+                boxTitle: AppStrings.totalAppointmentsMade,
                 maxValue: dailyGoalEntity.totalProspect,
                 minValue: dailyGoalEntity.currentProspect ?? 0,
               ),
               TargetBox(
-                boxTitle: AppStrings.todaysTotalProspect,
+                boxTitle: AppStrings.totalAppointmentCompleted,
                 maxValue: dailyGoalEntity.totalProspect,
                 minValue: dailyGoalEntity.currentProspect ?? 0,
               ),
@@ -58,33 +61,31 @@ class TargetBox extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width - AppValues.double_50;
 
     return Container(
+      constraints: const BoxConstraints(minHeight: AppValues.double_140),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
           AppValues.double_10,
         ),
-        color: AppColors.targetBoxColor,
+        color: AppColors.cyanPrimary,
       ),
       width: screenWidth / 3,
       padding: const EdgeInsets.all(AppValues.double_10),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Text(
                 minValue.toString(),
-                style: AppStyles.targetBoxStyle,
+                style: AppStyles.h2.white(),
               ),
               Text(
                 ' / ',
-                style: AppStyles.targetBoxStyle.copyWith(
-                  fontSize: AppValues.double_25,
-                ),
+                style: AppStyles.h4.white(),
               ),
               Text(
                 maxValue.toString(),
-                style: AppStyles.targetBoxStyle.copyWith(fontSize: AppValues.double_15),
+                style: AppStyles.h4.white(),
               ),
             ],
           ),
@@ -93,7 +94,7 @@ class TargetBox extends StatelessWidget {
           ),
           Text(
             boxTitle,
-            style: AppStyles.targetBoxStyle.copyWith(fontSize: AppValues.double_10),
+            style: AppStyles.h5.white(),
           ),
         ],
       ),
