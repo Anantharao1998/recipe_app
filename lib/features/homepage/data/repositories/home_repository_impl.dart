@@ -1,4 +1,3 @@
-import 'package:pokemondb/core/domain/entities/card.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// Implementation of [HomeRepository] class
@@ -13,5 +12,5 @@ class HomeRepositoryImpl implements HomeRepository {
   void fetchAccountDetails() => throw UnimplementedError();
 
   @override
-  Future<List<PokemonCard>> fetchAllPokemonCards() => throw UnimplementedError();
+  Future<List<dynamic>> fetchAllPokemonCards() => throw UnimplementedError();
 }

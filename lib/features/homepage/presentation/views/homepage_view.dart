@@ -14,9 +14,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String image = '';
-  final List<PokemonCard> test = <PokemonCard>[];
-
   @override
   Widget build(final BuildContext context) => Scaffold(
         body: Container(
