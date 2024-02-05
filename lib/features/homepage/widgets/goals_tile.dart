@@ -66,7 +66,7 @@ class TargetBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           AppValues.double_10,
         ),
-        color: AppColors.cyanPrimary,
+        color: AppColors.primaryColor,
       ),
       width: screenWidth / 3,
       padding: const EdgeInsets.all(AppValues.double_10),
@@ -94,7 +94,7 @@ class TargetBox extends StatelessWidget {
           ),
           Text(
             boxTitle,
-            style: AppStyles.h5.white(),
+            style: AppStyles.h6.white(),
           ),
         ],
       ),

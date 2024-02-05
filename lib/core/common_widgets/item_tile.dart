@@ -13,10 +13,58 @@ class ItemTile extends StatelessWidget {
   final VoidCallback? onClick;
 
   @override
-  Widget build(final BuildContext context) => Material(
-        elevation: AppValues.double_5,
-        child: ListTile(
-          title: Text(item.title),
-        ),
-      );
+  Widget build(final BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppValues.double_10),
+      child: Card(
+        margin: const EdgeInsets.only(top: AppValues.double_5),
+        shadowColor: AppColors.blackPrimary,
+        color: AppColors.whitePrimary,
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            vertical: AppValues.double_5,
+            horizontal: AppValues.double_20,
+          ),
+          height: AppValues.double_50,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: AppColors.primaryColor,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text(
+                    item.title,
+                    style: AppStyles.h5.white(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Spacer(),
+                  if (item.eventDate != null)
+                    Text(
+                      item.eventDate!.ddMMyyyy(),
+                      style: AppStyles.italic_6.white(),
+                    ),
+                ],
+              ),
+              if (item.subtitle != null)
+                SizedBox(
+                  width: screenWidth - AppValues.double_50,
+                  child: Text(
+                    item.subtitle!,
+                    maxLines: 1,
+                    style: AppStyles.norm_6.black(),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+            ],
+          ),
+        ).onTap(onTap: onClick),
+      ),
+    );
+  }
 }

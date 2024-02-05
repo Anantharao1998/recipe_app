@@ -4,7 +4,10 @@ import 'package:pokemondb/core/core.dart';
 /// Generic Item Tile Entity
 class ItemTileEntity extends Equatable {
   /// Generic Item Tile Entity\
-  const ItemTileEntity({required this.title, this.subtitle, this.state = ItemState.initial});
+  const ItemTileEntity({required this.title, this.subtitle, this.eventDate, this.state = ItemState.initial});
+
+  /// Events date
+  final DateTime? eventDate;
 
   /// Item state
   final ItemState state;
@@ -16,5 +19,5 @@ class ItemTileEntity extends Equatable {
   final String title;
 
   @override
-  List<Object?> get props => <Object?>[title, subtitle, state];
+  List<Object?> get props => <Object?>[title, subtitle, state, eventDate];
 }

@@ -169,8 +169,6 @@ linter:
   - use_function_type_syntax_for_parameters
   - use_full_hex_values_for_flutter_colors
   - use_enums
-  - use_decorated_box
-  - use_colored_box
   - use_build_context_synchronously
   - unsafe_html
   - unrelated_type_equality_checks
@@ -390,8 +388,6 @@ analyzer:
    use_function_type_syntax_for_parameters: error
    use_full_hex_values_for_flutter_colors: error
    use_enums: error
-   use_decorated_box: error
-   use_colored_box: error
    use_build_context_synchronously: error
    unsafe_html: error
    unrelated_type_equality_checks: error

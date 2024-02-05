@@ -1,9 +1,13 @@
 import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// Widget to show today's appointments (Events)
 class TodayEventTile extends StatelessWidget {
   /// Widget to show today's appointments (Events)
-  const TodayEventTile({super.key});
+  const TodayEventTile({required this.listOfEvents, super.key});
+
+  /// List of events
+  final List<EventsItem> listOfEvents;
 
   @override
   Widget build(final BuildContext context) => Column(
@@ -11,9 +15,23 @@ class TodayEventTile extends StatelessWidget {
           SectionTitle(
             title: AppStrings.todayEvents,
             onPressed: () {
-              // TODO: Add Events
+              // TODO: Add Events function here
             },
           ),
+          if (listOfEvents.isEmpty)
+            Center(
+              child: Text(
+                AppStrings.commonEmptyList(item: 'event'),
+              ),
+            )
+          else
+            Column(
+              children: <Widget>[
+                ...listOfEvents.map(
+                  (final EventsItem e) => ItemTile(item: e),
+                ),
+              ],
+            ),
         ],
       );
 }

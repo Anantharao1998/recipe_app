@@ -13,6 +13,7 @@ export 'constants/enums/item_state.dart';
 export 'domain/entities/item_tile_entity.dart';
 export 'extensions/datetime_extension.dart';
 export 'extensions/textstyle_extension.dart';
+export 'extensions/widget_extension.dart';
 export 'services/dio/dio_service.dart';
 export 'services/dio/dio_service_impl.dart';
 export 'services/interceptors/auth_interceptors.dart';

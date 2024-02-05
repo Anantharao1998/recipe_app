@@ -42,7 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     totalProspect: 20,
                   ),
                 ),
-                TodayEventTile(),
+                TodayEventTile(
+                  listOfEvents: <EventsItem>[],
+                ),
               ],
             ),
           ),

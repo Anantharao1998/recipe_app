@@ -1,6 +1,7 @@
 export 'data/datasources/remote_datasources.dart';
 export 'data/repositories/home_repository_impl.dart';
 export 'domain/entities/daily_goal_entity.dart';
+export 'domain/entities/event_item_entity.dart';
 export 'domain/repositories/home_repositories.dart';
 export 'presentation/bindings/homepage_binding.dart';
 export 'presentation/controllers/homepage_provider.dart';
