@@ -14,3 +14,6 @@ class NavigationService {
   }) =>
       _navigationKey.currentState!.pushNamed(routeName, arguments: args);
 }
+
+/// Global instane of navigation service
+final NavigationService navigationService = NavigationService();

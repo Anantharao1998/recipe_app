@@ -1,5 +1,6 @@
 export 'package:flutter/material.dart';
 export 'base/base_usecase.dart';
+export 'base/base_view.dart';
 export 'common_widgets/asset_image_view.dart';
 export 'common_widgets/item_tile.dart';
 export 'common_widgets/section_title.dart';

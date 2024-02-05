@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(final BuildContext context) => ScreenUtilInit(
         builder: (final BuildContext context, final Widget? child) => MaterialApp(
-          navigatorKey: NavigationService().navigationKey,
+          navigatorKey: navigationService.navigationKey,
           onGenerateRoute: AppRoutes.routes,
           theme: ThemeData(
             useMaterial3: true,

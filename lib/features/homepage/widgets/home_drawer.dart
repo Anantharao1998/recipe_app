@@ -16,10 +16,13 @@ class HomeDrawer extends StatelessWidget {
                 height: AppValues.double_80,
               ),
             ),
-            const _DrawerTile(AppStrings.events),
-            const _DrawerTile(AppStrings.contacts),
-            const _DrawerTile(AppStrings.appointments),
-            const _DrawerTile(AppStrings.contactDev),
+            _DrawerTile(
+              title: AppStrings.events,
+              onTap: () async => navigationService.navigateTo(Routes.eventsList),
+            ),
+            const _DrawerTile(title: AppStrings.contacts),
+            const _DrawerTile(title: AppStrings.appointments),
+            const _DrawerTile(title: AppStrings.contactDev),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.all(AppValues.double_10),
@@ -37,13 +40,14 @@ class HomeDrawer extends StatelessWidget {
 }
 
 class _DrawerTile extends StatelessWidget {
-  const _DrawerTile(this.title);
+  const _DrawerTile({required this.title, this.onTap});
 
+  final VoidCallback? onTap;
   final String title;
 
   @override
   Widget build(final BuildContext context) => ListTile(
-        onTap: () => debugPrint(title),
+        onTap: onTap,
         title: Text(
           title,
           style: AppStyles.italic_5,

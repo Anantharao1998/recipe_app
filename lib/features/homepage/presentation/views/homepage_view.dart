@@ -4,65 +4,54 @@ import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// MyHomePage
-class MyHomePage extends StatefulWidget {
+class HomeView extends BaseView {
   /// MyHomePage
-
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  HomeView({
+    super.key,
+    super.appBarTitle = AppStrings.welcomeMessage,
+  });
 
   @override
-  Widget build(final BuildContext context) => Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryColor,
-          actions: <Widget>[
-            IconButton(
-              color: AppColors.whitePrimary,
-              icon: const Icon(Icons.menu),
-              onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
+  List<Widget>? actionButtons() => <Widget>[
+        IconButton(
+          color: AppColors.whitePrimary,
+          icon: const Icon(Icons.menu),
+          onPressed: () => openDrawer(),
+        ),
+      ];
+
+  @override
+  Widget body(final BuildContext context) => Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            opacity: 0.3,
+            image: AssetImage(
+              AppAssets.backgroundImage,
             ),
-          ],
-          title: Text(
-            AppStrings.welcomeMessage,
-            style: AppStyles.h4.white(),
           ),
         ),
-        endDrawer: const HomeDrawer(),
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              opacity: 0.3,
-              image: AssetImage(
-                AppAssets.backgroundImage,
+        child: const SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              GoalsTile(
+                dailyGoalEntity: DailyGoalEntity(
+                  totalAppointmentCompleted: 20,
+                  totalAppointmentFixed: 20,
+                  totalProspect: 20,
+                ),
               ),
-            ),
-          ),
-          child: const SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                GoalsTile(
-                  dailyGoalEntity: DailyGoalEntity(
-                    totalAppointmentCompleted: 20,
-                    totalAppointmentFixed: 20,
-                    totalProspect: 20,
-                  ),
-                ),
-                TodayEventTile(
-                  listOfEvents: <EventsItem>[],
-                ),
-              ],
-            ),
+              TodayEventTile(
+                listOfEvents: <EventsItem>[],
+              ),
+            ],
           ),
         ),
       );
+
+  @override
+  HomeDrawer drawer() => const HomeDrawer();
 }
