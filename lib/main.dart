@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/dependency_injection.dart';
-import 'package:pokemondb/features/homepage/homepage.dart';
 
 void main() async {
   // init dependency injection
@@ -16,10 +16,13 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(final BuildContext context) => MaterialApp(
-        theme: ThemeData(
-          useMaterial3: true,
+  Widget build(final BuildContext context) => ScreenUtilInit(
+        builder: (final BuildContext context, final Widget? child) => MaterialApp(
+          navigatorKey: NavigationService().navigationKey,
+          onGenerateRoute: AppRoutes.routes,
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
         ),
-        home: const MyHomePage(),
       );
 }

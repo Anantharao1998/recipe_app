@@ -7,5 +7,6 @@ export 'presentation/bindings/homepage_binding.dart';
 export 'presentation/controllers/homepage_provider.dart';
 export 'presentation/views/homepage_view.dart';
 export 'widgets/goals_tile.dart';
+export 'widgets/home_drawer.dart';
 export 'widgets/today_events_tile.dart';
 export 'widgets/upcoming_events_tile.dart';

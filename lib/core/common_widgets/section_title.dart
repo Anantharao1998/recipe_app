@@ -31,9 +31,7 @@ class SectionTitle extends StatelessWidget {
                 if (subtitle != null)
                   Text(
                     subtitle!,
-                    style: AppStyles.h5.copyWith(
-                      fontSize: AppValues.double_15,
-                    ),
+                    style: AppStyles.h5.grey(),
                   ),
               ],
             ),

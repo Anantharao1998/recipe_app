@@ -14,8 +14,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(final BuildContext context) => Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
+          actions: <Widget>[
+            IconButton(
+              color: AppColors.whitePrimary,
+              icon: const Icon(Icons.menu),
+              onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
+            ),
+          ],
+          title: Text(
+            AppStrings.welcomeMessage,
+            style: AppStyles.h4.white(),
+          ),
+        ),
+        endDrawer: const HomeDrawer(),
         body: Container(
           height: double.infinity,
           width: double.infinity,
@@ -32,9 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(
-                  height: kToolbarHeight,
-                ),
                 GoalsTile(
                   dailyGoalEntity: DailyGoalEntity(
                     totalAppointmentCompleted: 20,

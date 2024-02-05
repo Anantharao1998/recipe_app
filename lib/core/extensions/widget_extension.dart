@@ -4,6 +4,15 @@ import 'package:pokemondb/core/core.dart';
 
 /// Container extensions
 extension WidgetExtension on Widget {
+  Widget underlined() => Column(
+        children: <Widget>[
+          this,
+          const Divider(
+            height: AppValues.double_0,
+          ),
+        ],
+      );
+
   Widget onTap({
     final Function()? onTap,
   }) =>

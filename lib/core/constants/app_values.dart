@@ -5,6 +5,7 @@ library;
 class AppValues {
   AppValues._();
 
+  static const double double_0 = 0;
   static const double double_1 = 1;
   static const double double_10 = 10;
   static const double double_100 = 100;
@@ -21,5 +22,6 @@ class AppValues {
   static const double double_5 = 5;
   static const double double_50 = 50;
   static const double double_60 = 60;
+  static const double double_80 = 80;
   static const double double_75 = 75;
 }
