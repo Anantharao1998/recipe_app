@@ -8,7 +8,6 @@ class HomeView extends BaseView {
   /// MyHomePage
   HomeView({
     super.key,
-    super.appBarTitle = AppStrings.welcomeMessage,
   });
 
   @override
@@ -19,6 +18,9 @@ class HomeView extends BaseView {
           onPressed: () => openDrawer(),
         ),
       ];
+
+  @override
+  String? appBarTitle() => AppStrings.welcomeMessage;
 
   @override
   Widget body(final BuildContext context) => Container(
@@ -53,5 +55,7 @@ class HomeView extends BaseView {
       );
 
   @override
-  HomeDrawer drawer() => const HomeDrawer();
+  HomeDrawer drawer() => HomeDrawer(
+        onClick: closeDrawer,
+      );
 }

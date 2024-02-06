@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:pokemondb/features/contacts/contacts.dart';
 import 'package:pokemondb/features/events/events.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
@@ -14,6 +15,8 @@ class AppRoutes {
         return _pageRoute(HomeView(), settings);
       case Routes.eventsList:
         return _pageRoute(const EventsListPage(), settings);
+      case Routes.contactList:
+        return _pageRoute(ContactsListing(), settings);
       default:
         return MaterialPageRoute<Widget>(
           builder: (final _) => Scaffold(
@@ -32,6 +35,7 @@ class AppRoutes {
 class Routes {
   Routes._();
 
+  static const String contactList = '/contactList';
   static const String eventsList = '/eventsList';
   static const String home = '/home';
   static const String initialRoute = '/';

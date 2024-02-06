@@ -22,6 +22,7 @@ class AppValues {
   static const double double_5 = 5;
   static const double double_50 = 50;
   static const double double_60 = 60;
-  static const double double_80 = 80;
   static const double double_75 = 75;
+  static const double double_80 = 80;
+  static const int int_100 = 100;
 }

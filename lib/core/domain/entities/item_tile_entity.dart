@@ -4,20 +4,20 @@ import 'package:pokemondb/core/core.dart';
 /// Generic Item Tile Entity
 class ItemTileEntity extends Equatable {
   /// Generic Item Tile Entity\
-  const ItemTileEntity({required this.title, this.subtitle, this.eventDate, this.state = ItemState.initial});
+  const ItemTileEntity({required this.name, this.description, this.eventDate, this.state = ItemState.initial});
+
+  /// Item subtitle.
+  final String? description;
 
   /// Events date
   final DateTime? eventDate;
 
+  /// Item title
+  final String name;
+
   /// Item state
   final ItemState state;
 
-  /// Item subtitle.
-  final String? subtitle;
-
-  /// Item title
-  final String title;
-
   @override
-  List<Object?> get props => <Object?>[title, subtitle, state, eventDate];
+  List<Object?> get props => <Object?>[name, description, state, eventDate];
 }

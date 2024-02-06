@@ -38,7 +38,7 @@ class ItemTile extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Text(
-                    item.title,
+                    item.name,
                     style: AppStyles.h5.white(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -51,11 +51,11 @@ class ItemTile extends StatelessWidget {
                     ),
                 ],
               ),
-              if (item.subtitle != null)
+              if (item.description != null)
                 SizedBox(
                   width: screenWidth - AppValues.double_50,
                   child: Text(
-                    item.subtitle!,
+                    item.description!,
                     maxLines: 1,
                     style: AppStyles.norm_6.black(),
                     overflow: TextOverflow.ellipsis,

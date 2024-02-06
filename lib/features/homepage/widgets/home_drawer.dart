@@ -3,7 +3,10 @@ import 'package:pokemondb/core/core.dart';
 /// Drawer for home
 class HomeDrawer extends StatelessWidget {
   /// Drawer for home
-  const HomeDrawer({super.key});
+  const HomeDrawer({required this.onClick, super.key});
+
+  /// Callback when item clicked on Drawer
+  final VoidCallback onClick;
 
   @override
   Widget build(final BuildContext context) => Drawer(
@@ -18,9 +21,19 @@ class HomeDrawer extends StatelessWidget {
             ),
             _DrawerTile(
               title: AppStrings.events,
-              onTap: () async => navigationService.navigateTo(Routes.eventsList),
+              onTap: () async {
+                onClick.call();
+                await navigationService.navigateTo(Routes.eventsList);
+              },
             ),
-            const _DrawerTile(title: AppStrings.contacts),
+            _DrawerTile(
+              title: AppStrings.contacts,
+              onTap: () async {
+                onClick.call();
+
+                await navigationService.navigateTo(Routes.contactList);
+              },
+            ),
             const _DrawerTile(title: AppStrings.appointments),
             const _DrawerTile(title: AppStrings.contactDev),
             const Spacer(),
