@@ -6,6 +6,9 @@ import 'package:pokemondb/features/homepage/homepage.dart';
 void homeBindings(final GetIt getIt) {
   getIt
 
+    /// Register controller
+    ..registerFactory<HomeController>(() => HomeController())
+
     /// register datasource
     ..registerFactory<HomeRemoteDataSource>(() => HomeRemoteDataSourceImpl())
 

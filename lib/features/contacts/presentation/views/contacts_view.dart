@@ -2,15 +2,12 @@ import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
 
 /// Contacts listing page
-class ContactsListing extends BaseView {
+class ContactsListing extends BaseView<ContactsController> {
   /// Contacts listing page
   ContactsListing({super.key});
 
-  /// Page controller
-  final ContactsController controller = ContactsController();
-
   @override
-  Widget body(final BuildContext context) => const SingleChildScrollView(
+  Widget body(final BuildContext context, final ContactsController controller) => const SingleChildScrollView(
         child: Column(
           children: <Widget>[
             ItemTile(
@@ -21,10 +18,10 @@ class ContactsListing extends BaseView {
       );
 
   @override
-  Widget? floatingActionButton() => FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          /// TODO: Add contact
-        },
+  Widget? floatingActionButton() => FloatingActionButton.extended(
+        label: const Icon(
+          Icons.person_add_alt,
+        ),
+        onPressed: () {},
       );
 }

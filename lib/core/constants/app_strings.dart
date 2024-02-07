@@ -3,6 +3,7 @@
 class AppStrings {
   AppStrings._();
 
+  static const String addContacts = 'Click to add contact';
   static const String appointments = 'Appointments';
   static const String contactDev = 'Contact Developer';
   static const String contacts = 'Contacts';

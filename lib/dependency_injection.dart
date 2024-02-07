@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/features/contacts/contacts.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// GetIt instance
@@ -20,6 +21,7 @@ Future<void> init() async {
     );
 
   homeBindings(locator);
+  contactsBinding(locator);
 
   return;
 }

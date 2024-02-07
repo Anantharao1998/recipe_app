@@ -4,7 +4,7 @@ import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
 /// MyHomePage
-class HomeView extends BaseView {
+class HomeView extends BaseView<HomeController> {
   /// MyHomePage
   HomeView({
     super.key,
@@ -23,7 +23,7 @@ class HomeView extends BaseView {
   String? appBarTitle() => AppStrings.welcomeMessage;
 
   @override
-  Widget body(final BuildContext context) => Container(
+  Widget body(final BuildContext context, final BaseController controller) => Container(
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(

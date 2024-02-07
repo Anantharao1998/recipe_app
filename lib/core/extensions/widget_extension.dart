@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:pokemondb/core/core.dart';
+import 'package:provider/provider.dart';
 
 /// Container extensions
 extension WidgetExtension on Widget {
@@ -19,5 +20,14 @@ extension WidgetExtension on Widget {
       InkWell(
         onTap: onTap,
         child: this,
+      );
+
+  Widget listen<T2 extends ChangeNotifier, T>(final T2 provider, final T variable) => Selector<T2, T>(
+        builder: (final BuildContext context, final T value, final _) {
+          debugPrint('Being Reloaded');
+
+          return this;
+        },
+        selector: (final _, final T2 provider) => variable,
       );
 }

@@ -4,7 +4,7 @@ export 'domain/entities/daily_goal_entity.dart';
 export 'domain/entities/event_item_entity.dart';
 export 'domain/repositories/home_repositories.dart';
 export 'presentation/bindings/homepage_binding.dart';
-export 'presentation/controllers/homepage_provider.dart';
+export 'presentation/controllers/homepage_controller.dart';
 export 'presentation/views/homepage_view.dart';
 export 'widgets/goals_tile.dart';
 export 'widgets/home_drawer.dart';

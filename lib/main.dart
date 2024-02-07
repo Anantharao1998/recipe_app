@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         builder: (final BuildContext context, final Widget? child) => MaterialApp(
           navigatorKey: navigationService.navigationKey,
           onGenerateRoute: AppRoutes.routes,
-          theme: ThemeData(
+          theme: ThemeData.light(
             useMaterial3: true,
           ),
         ),
