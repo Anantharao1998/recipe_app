@@ -1,4 +1,4 @@
-package com.example.pokemondb
+package com.ksa.prospect
 
 import io.flutter.embedding.android.FlutterActivity
 

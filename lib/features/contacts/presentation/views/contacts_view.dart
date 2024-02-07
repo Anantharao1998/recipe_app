@@ -21,10 +21,20 @@ class ContactsListing extends BaseView<ContactsController> {
       );
 
   @override
-  Widget? floatingActionButton() => FloatingActionButton.extended(
+  Widget? floatingActionButton(final ContactsController controller) => FloatingActionButton.extended(
         label: const Icon(
           Icons.person_add_alt,
         ),
-        onPressed: () {},
+        onPressed: () async {
+          await controller.addContact();
+        },
       );
+
+  @override
+  Future<void> onInit(final ContactsController provider, final BuildContext context) async {
+    await provider.getData();
+    // TODO: implement onInit
+    // ignore: use_build_context_synchronously
+    super.onInit(provider, context);
+  }
 }

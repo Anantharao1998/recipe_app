@@ -36,7 +36,7 @@ abstract class BaseView<T extends BaseController> extends StatelessWidget {
   Widget? drawer() => null;
 
   /// Floating action button
-  Widget? floatingActionButton() => null;
+  Widget? floatingActionButton(final T controller) => null;
 
   /// Body widget to  be passed to the Scaffold
   Widget body(final BuildContext context, final T controller);
@@ -46,7 +46,7 @@ abstract class BaseView<T extends BaseController> extends StatelessWidget {
         onInit: (final T controller) => onInit.call(controller, context),
         builder: (final BuildContext ctxt, final T controller) => SafeArea(
           child: Scaffold(
-            floatingActionButton: floatingActionButton(),
+            floatingActionButton: floatingActionButton(controller),
             key: scaffoldKey,
             endDrawer: drawer(),
             appBar: hasAppBar

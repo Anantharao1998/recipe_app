@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150413355317",
+    "project_id": "prospect-19bba",
+    "storage_bucket": "prospect-19bba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150413355317:android:4e196d40e72035be19c47c",
+        "android_client_info": {
+          "package_name": "com.ksa.prospect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_5JQkiiRFL0J815xEbvqwaEzwzhcvriA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
