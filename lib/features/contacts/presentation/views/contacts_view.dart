@@ -10,6 +10,9 @@ class ContactsListing extends BaseView<ContactsController> {
   Widget body(final BuildContext context, final ContactsController controller) => const SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            SizedBox(
+              height: AppValues.double_20,
+            ),
             ItemTile(
               item: ContactItem(name: 'Anantha'),
             ),

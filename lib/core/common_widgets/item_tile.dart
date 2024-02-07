@@ -12,6 +12,25 @@ class ItemTile extends StatelessWidget {
   /// OnClick function, defines what happen when tile has been clicked
   final VoidCallback? onClick;
 
+  Color _getColor(final ItemState state) {
+    switch (state) {
+      case ItemState.cancelled:
+        return AppColors.redPrimary;
+      case ItemState.initial:
+        return AppColors.primaryColor;
+      case ItemState.inProgress:
+        return AppColors.yellowPrimary;
+      case ItemState.completed:
+        return AppColors.greenPrimary;
+      case ItemState.delayed:
+        return AppColors.orangePrimary;
+      case ItemState.pending:
+        return AppColors.bluePrimary;
+      case ItemState.rescheduled:
+        return AppColors.greyPrimary;
+    }
+  }
+
   @override
   Widget build(final BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -29,8 +48,8 @@ class ItemTile extends StatelessWidget {
           ),
           height: AppValues.double_50,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: AppColors.primaryColor,
+          decoration: BoxDecoration(
+            color: _getColor(item.state),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

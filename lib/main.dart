@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(final BuildContext context) => ScreenUtilInit(
         builder: (final BuildContext context, final Widget? child) => MaterialApp(
           navigatorKey: navigationService.navigationKey,
+          scrollBehavior: const ScrollBehavior().copyWith(
+            physics: const BouncingScrollPhysics(),
+          ),
           onGenerateRoute: AppRoutes.routes,
           theme: ThemeData.light(
             useMaterial3: true,
