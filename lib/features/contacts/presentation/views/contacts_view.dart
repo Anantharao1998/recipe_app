@@ -7,17 +7,15 @@ class ContactsListing extends BaseView<ContactsController> {
   ContactsListing({super.key});
 
   @override
-  Widget body(final BuildContext context, final ContactsController controller) => const SingleChildScrollView(
+  Widget body(final BuildContext context, final ContactsController controller) => SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: AppValues.double_20,
             ),
-            ItemTile(
-              item: ContactItem(name: 'Anantha'),
-            ),
+            ...controller.contactsList.map<ItemTile>((final ContactItem e) => ItemTile(item: e)),
           ],
-        ),
+        ).listen<ContactsController, List<ContactItem>>(controller, controller.contactsList),
       );
 
   @override
@@ -33,8 +31,5 @@ class ContactsListing extends BaseView<ContactsController> {
   @override
   Future<void> onInit(final ContactsController provider, final BuildContext context) async {
     await provider.getData();
-    // TODO: implement onInit
-    // ignore: use_build_context_synchronously
-    super.onInit(provider, context);
   }
 }

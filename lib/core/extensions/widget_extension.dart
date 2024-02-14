@@ -23,11 +23,7 @@ extension WidgetExtension on Widget {
       );
 
   Widget listen<T2 extends ChangeNotifier, T>(final T2 provider, final T variable) => Selector<T2, T>(
-        builder: (final BuildContext context, final T value, final _) {
-          debugPrint('Being Reloaded');
-
-          return this;
-        },
+        builder: (final BuildContext context, final T value, final _) => this,
         selector: (final _, final T2 provider) => variable,
       );
 }
