@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:pokemondb/features/contacts/data/models/contact_item_model.dart';
 
 /// Contacts View controller
 class ContactsController extends BaseController {
+  /// master list of contacts list
+  final List<ContactItem> contactsList = <ContactItem>[];
 
-  
   /// Firebase instance
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -31,7 +34,11 @@ class ContactsController extends BaseController {
         if (kDebugMode) {
           print('${doc.id} => ${doc.data()}');
         }
+
+        contactsList.add(ContactItemsModel.fromJson(doc.data()));
       }
+
+      notifyListeners();
     });
   }
 }
