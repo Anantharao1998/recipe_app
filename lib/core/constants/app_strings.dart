@@ -15,6 +15,8 @@ class AppStrings {
   static const String totalAppointmentsMade = 'Total Appointments Made';
   static const String totalProspect = 'Total Guests Connected';
   static const String welcomeMessage = 'Have a nice day !!!';
+  static const String generalFieldEmptyError = 'This is a mandatory field. Must not be empty.';
+  static const String name = 'Name';
 
   static String commonEmptyList({required final String item}) => 'There are no ${item.toLowerCase()}s.';
 }
