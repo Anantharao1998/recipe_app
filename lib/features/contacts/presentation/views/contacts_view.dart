@@ -15,11 +15,11 @@ class ContactsListing extends BaseView<ContactsController> {
             ),
             ...controller.contactsList.map<ItemTile>((final ContactItem e) => ItemTile(item: e)),
           ],
-        ).listen<ContactsController, List<ContactItem>>(controller, controller.contactsList),
+        ).selectedListen<ContactsController, List<ContactItem>>(controller, controller.contactsList),
       );
 
   @override
-  Widget? floatingActionButton(final ContactsController controller) => FloatingActionButton.extended(
+  Widget? floatingActionButton(final BuildContext context, final ContactsController controller) => FloatingActionButton.extended(
         label: const Icon(
           Icons.person_add_alt,
         ),

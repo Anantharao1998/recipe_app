@@ -22,8 +22,12 @@ extension WidgetExtension on Widget {
         child: this,
       );
 
-  Widget listen<T2 extends ChangeNotifier, T>(final T2 provider, final T variable) => Selector<T2, T>(
+  Widget selectedListen<T2 extends ChangeNotifier, T>(final T2 provider, final T variable) => Selector<T2, T>(
         builder: (final BuildContext context, final T value, final _) => this,
         selector: (final _, final T2 provider) => variable,
+      );
+
+  Widget consumedListen<T extends ChangeNotifier>(final T controller) => Consumer<T>(
+        builder: (final BuildContext context, final T value, final Widget? child) => this,
       );
 }

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
-import 'package:pokemondb/features/contacts/data/models/contact_item_model.dart';
 
 /// Contacts View controller
 class ContactsController extends BaseController {
@@ -37,8 +36,7 @@ class ContactsController extends BaseController {
 
         contactsList.add(ContactItemsModel.fromJson(doc.data()));
       }
-
-      notifyListeners();
     });
+    notifyListeners();
   }
 }

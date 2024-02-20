@@ -9,6 +9,7 @@ class AppStrings {
   static const String contacts = 'Contacts';
   static const String dashboard = 'Dashboard';
   static const String events = 'Events';
+  static const String noInternetConnection = 'Please have an active internet connection.';
   static const String todayEvents = "Today's Event";
   static const String todayGoals = "Today's Goals";
   static const String totalAppointmentCompleted = 'Total Completed Appointments';

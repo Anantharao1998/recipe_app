@@ -1,6 +1,4 @@
 import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/dependency_injection.dart';
-import 'package:provider/provider.dart';
 
 /// BaseView for general use
 abstract class BaseView<T extends BaseController> extends StatelessWidget {
@@ -36,17 +34,17 @@ abstract class BaseView<T extends BaseController> extends StatelessWidget {
   Widget? drawer() => null;
 
   /// Floating action button
-  Widget? floatingActionButton(final T controller) => null;
+  Widget? floatingActionButton(final BuildContext context, final T controller) => null;
 
   /// Body widget to  be passed to the Scaffold
   Widget body(final BuildContext context, final T controller);
 
   @override
-  Widget build(final BuildContext context) => _ControllerHandler<T>(
+  Widget build(final BuildContext context) => ProviderViewBuilder<T>(
         onInit: (final T controller) => onInit.call(controller, context),
         builder: (final BuildContext ctxt, final T controller) => SafeArea(
           child: Scaffold(
-            floatingActionButton: floatingActionButton(controller),
+            floatingActionButton: floatingActionButton(ctxt, controller),
             key: scaffoldKey,
             endDrawer: drawer(),
             appBar: hasAppBar
@@ -62,38 +60,8 @@ abstract class BaseView<T extends BaseController> extends StatelessWidget {
                         : null,
                   )
                 : null,
-            body: body(context, controller),
+            body: body(ctxt, controller),
           ),
-        ),
-      );
-}
-
-class _ControllerHandler<T extends BaseController> extends StatefulWidget {
-  const _ControllerHandler({required this.builder, this.onInit, super.key});
-
-  final Function(T controller)? onInit;
-  final Widget Function(BuildContext context, T controller) builder;
-
-  @override
-  State<_ControllerHandler<T>> createState() => __ControllerHandlerState<T>();
-}
-
-class __ControllerHandlerState<T extends BaseController> extends State<_ControllerHandler<T>> {
-  late T controller;
-
-  @override
-  void initState() {
-    controller = locator<T>();
-    widget.onInit?.call(controller);
-    super.initState();
-  }
-
-  @override
-  Widget build(final BuildContext context) => ChangeNotifierProvider<T>(
-        create: (final _) => controller,
-        builder: (final BuildContext ctxt, final _) => widget.builder(
-          context,
-          controller,
         ),
       );
 }
