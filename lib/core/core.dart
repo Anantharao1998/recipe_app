@@ -4,6 +4,7 @@ export 'base/base_usecase.dart';
 export 'base/base_view.dart';
 export 'base/provider_view_builder.dart';
 export 'common_widgets/asset_image_view.dart';
+export 'common_widgets/custom_text_field.dart';
 export 'common_widgets/item_tile.dart';
 export 'common_widgets/loading.dart';
 export 'common_widgets/section_title.dart';

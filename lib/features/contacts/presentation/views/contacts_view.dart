@@ -24,7 +24,7 @@ class ContactsListing extends BaseView<ContactsController> {
           Icons.person_add_alt,
         ),
         onPressed: () async {
-          await controller.addContact();
+          await navigationService.navigateTo(Routes.addContacts);
         },
       );
 
