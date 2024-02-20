@@ -13,5 +13,6 @@ class ContactItemsModel extends ContactItem {
   factory ContactItemsModel.fromJson(final Map<String, dynamic> json) => _$ContactItemsModelFromJson(json);
 
   /// ToJson method for ContactItemsModel
+  @override
   Map<String, dynamic> toJson() => _$ContactItemsModelToJson(this);
 }

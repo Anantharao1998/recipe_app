@@ -1,4 +1,5 @@
 export 'package:flutter/material.dart';
+export 'base/base_firestore.dart';
 export 'base/base_provider.dart';
 export 'base/base_usecase.dart';
 export 'base/base_view.dart';

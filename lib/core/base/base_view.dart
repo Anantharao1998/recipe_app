@@ -1,4 +1,5 @@
 import 'package:pokemondb/core/core.dart';
+import 'package:provider/provider.dart';
 
 /// BaseView for general use
 abstract class BaseView<T extends BaseController> extends StatelessWidget {
@@ -39,28 +40,39 @@ abstract class BaseView<T extends BaseController> extends StatelessWidget {
   /// Body widget to  be passed to the Scaffold
   Widget body(final BuildContext context, final T controller);
 
+  Widget _showLoading() => const Center(child: Loading());
+
   @override
   Widget build(final BuildContext context) => ProviderViewBuilder<T>(
         onInit: (final T controller) => onInit.call(controller, context),
         builder: (final BuildContext ctxt, final T controller) => SafeArea(
-          child: Scaffold(
-            floatingActionButton: floatingActionButton(ctxt, controller),
-            key: scaffoldKey,
-            endDrawer: drawer(),
-            appBar: hasAppBar
-                ? AppBar(
-                    automaticallyImplyLeading: false,
-                    backgroundColor: AppColors.primaryColor,
-                    actions: actionButtons(),
-                    title: appBarTitle() != null
-                        ? Text(
-                            appBarTitle()!,
-                            style: AppStyles.h4.white(),
-                          )
-                        : null,
-                  )
-                : null,
-            body: body(ctxt, controller),
+          child: Stack(
+            children: <Widget>[
+              Scaffold(
+                floatingActionButton: floatingActionButton(ctxt, controller),
+                key: scaffoldKey,
+                endDrawer: drawer(),
+                appBar: hasAppBar
+                    ? AppBar(
+                        automaticallyImplyLeading: false,
+                        backgroundColor: AppColors.primaryColor,
+                        actions: actionButtons(),
+                        title: appBarTitle() != null
+                            ? Text(
+                                appBarTitle()!,
+                                style: AppStyles.h4.white(),
+                              )
+                            : null,
+                      )
+                    : null,
+                body: body(ctxt, controller),
+              ),
+              Selector<T, ViewState>(
+                selector: (final BuildContext context, final T provider) => provider.viewState,
+                builder: (final BuildContext context, final ViewState state, final _) =>
+                    state == ViewState.loading ? _showLoading() : Container(),
+              ),
+            ],
           ),
         ),
       );

@@ -19,5 +19,7 @@ class AppStrings {
   static const String generalFieldEmptyError = 'This is a mandatory field. Must not be empty.';
   static const String name = 'Name';
 
+  static const String contactCollection = 'contact';
+
   static String commonEmptyList({required final String item}) => 'There are no ${item.toLowerCase()}s.';
 }

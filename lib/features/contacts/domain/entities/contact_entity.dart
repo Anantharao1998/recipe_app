@@ -24,4 +24,13 @@ class ContactItem extends ItemTileEntity {
 
   /// Person's occupation type
   final OccupationCategory? occupationType;
+
+  /// toJson()
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'age': age,
+        'name': name,
+        'location': location,
+        'occupation': occupation,
+        'occupationType': occupationType,
+      };
 }

@@ -240,8 +240,8 @@ class CustomTextField extends StatelessWidget {
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(top: 17, right: 20, bottom: 14),
-                        child: ImageView(
-                          imagePath: _isPasswordHidden.value ? '' : '',
+                        child: AssetImageView(
+                          fileName: _isPasswordHidden.value ? '' : '',
                         ),
                       ),
                     )

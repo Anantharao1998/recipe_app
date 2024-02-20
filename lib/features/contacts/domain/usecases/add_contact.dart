@@ -2,18 +2,15 @@ import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
 
 /// Add Contacts usecase
-class AddContacts extends BaseUseCase {
+class AddContacts extends BaseUseCase<ContactItem> {
   /// Add Contacts usecase
   AddContacts({required this.repository});
 
   /// Repository instance
   final ContactRepository repository;
 
-  /// Call API
   @override
-  void call() {
-    throw UnimplementedError();
+  void call(final ContactItem data) {
+    repository.addContact(data);
   }
-  
-
 }
