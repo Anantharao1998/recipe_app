@@ -1,4 +1,3 @@
-import 'package:get_it/get_it.dart';
 import 'package:pokemondb/dependency_injection.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 

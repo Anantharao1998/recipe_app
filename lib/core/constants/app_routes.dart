@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
-import 'package:pokemondb/features/contacts/presentation/views/add_contacts_view.dart';
 import 'package:pokemondb/features/events/events.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
 
@@ -38,8 +37,8 @@ class AppRoutes {
 class Routes {
   Routes._();
 
-  static const String contactList = '/contactList';
   static const String addContacts = '/addContacts';
+  static const String contactList = '/contactList';
   static const String eventsList = '/eventsList';
   static const String home = '/home';
   static const String initialRoute = '/';

@@ -21,10 +21,10 @@ class ContactsController extends BaseController {
 
   /// get data
   Future<void> getData() async {
+    setLoading();
     final List<ContactItem> result = await repository.getContacts();
 
     contactsList = result;
-
-    notifyListeners();
+    setSuccess();
   }
 }

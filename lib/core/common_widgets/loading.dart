@@ -7,29 +7,22 @@ class Loading extends StatelessWidget {
   const Loading({super.key});
 
   @override
-  Widget build(final BuildContext context) => WillPopScope(
-        onWillPop: () async => false,
-        child: Scaffold(
-          backgroundColor: AppColors.whitePrimary,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Center(
-                child: AssetImageView(
-                  fileName: AppAssets.backgroundImage,
-                  height: AppValues.double_100,
-                  width: AppValues.double_100,
-                ),
-              ),
-              const SizedBox(
-                height: AppValues.double_20,
-              ),
-              LoadingAnimationWidget.staggeredDotsWave(
+  Widget build(final BuildContext context) => PopScope(
+        canPop: false,
+        child: Stack(
+          children: <Widget>[
+            Container(
+              color: AppColors.greyPrimary.withOpacity(0.7),
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Center(
+              child: LoadingAnimationWidget.staggeredDotsWave(
                 color: AppColors.primaryColor,
                 size: AppValues.double_50,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       );
 }

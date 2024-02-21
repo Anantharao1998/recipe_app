@@ -1,5 +1,6 @@
 import 'package:pokemondb/core/core.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:provider/provider.dart';
 
 /// Contacts listing page
 class ContactsListing extends BaseView<ContactsController> {
@@ -8,14 +9,17 @@ class ContactsListing extends BaseView<ContactsController> {
 
   @override
   Widget body(final BuildContext context, final ContactsController controller) => SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(
-              height: AppValues.double_20,
-            ),
-            ...controller.contactsList.map<ItemTile>((final ContactItem e) => ItemTile(item: e)),
-          ],
-        ).selectedListen<ContactsController, List<ContactItem>>(controller, controller.contactsList),
+        child: Selector<ContactsController, List<ContactItem>>(
+          builder: (final _, final List<ContactItem> value, final __) => Column(
+            children: <Widget>[
+              const SizedBox(
+                height: AppValues.double_20,
+              ),
+              ...value.map<ItemTile>((final ContactItem e) => ItemTile(item: e)),
+            ],
+          ),
+          selector: (final _, final ContactsController controller) => controller.contactsList,
+        ),
       );
 
   @override
