@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pokemondb/core/core.dart';
+import 'package:pokemondb/core/extensions/exception_extension.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
 
 /// Contacts View controller
@@ -22,9 +23,8 @@ class ContactsController extends BaseController {
   /// get data
   Future<void> getData() async {
     setLoading();
-    final List<ContactItem> result = await repository.getContacts();
+    await repository.getContacts().onResponse((final List<ContactItem> result) {}, (final Exception error) {});
 
-    contactsList = result;
     setSuccess();
   }
 }
