@@ -1,7 +1,12 @@
-import 'package:get_it/get_it.dart';
+import 'package:pokemondb/dependency_injection.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:pokemondb/features/contacts/data/datasources/contact_remote_datasource.dart';
 
 /// Contacts binding
 void contactsBinding(final GetIt getIt) {
-  getIt.registerFactory(() => ContactsController());
+  getIt.registerFactory<ContactRemoteDataSource>(() => ContactRemoteDataSourceImpl());
+
+  getIt.registerFactory<ContactRepository>(() => ContactRepositoryImpl(remoteDataSource: locator()));
+
+  getIt.registerFactory(() => ContactsController(repository: locator()));
 }
