@@ -6,7 +6,7 @@ import 'package:pokemondb/features/contacts/contacts.dart';
 import 'package:pokemondb/features/contacts/data/datasources/contact_remote_datasource.dart';
 
 /// Contact repository implementation
-class ContactRepositoryImpl with ErrorHandler implements ContactRepository {
+class ContactRepositoryImpl with ApiCallHandler implements ContactRepository {
   /// Constructor
   ContactRepositoryImpl({required this.remoteDataSource});
 
@@ -19,13 +19,16 @@ class ContactRepositoryImpl with ErrorHandler implements ContactRepository {
   }
 
   @override
+  // ignore: prefer_expression_function_bodies
   Future<Either<Exception, List<ContactItem>>> getContacts() async {
-    try {
-      final List<ContactItem> result = await remoteDataSource.getContact();
+    return callApiWithErrorHandler<Exception, List<ContactItem>>(() => remoteDataSource.getContact());
 
-      return Right(result);
-    } on Exception catch (error) {
-      return Left(error);
-    }
+    // try {
+    //   final List<ContactItem> result = await remoteDataSource.getContact();
+
+    //   return Right(result);
+    // } on Exception catch (error) {
+    //   return Left(error);
+    // }
   }
 }

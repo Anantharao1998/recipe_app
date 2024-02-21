@@ -23,7 +23,12 @@ class ContactsController extends BaseController {
   /// get data
   Future<void> getData() async {
     setLoading();
-    await repository.getContacts().onResponse((final List<ContactItem> result) {}, (final Exception error) {});
+    await repository.getContacts().onResponse(
+      (final List<ContactItem> result) {
+        contactsList = result;
+      },
+      (final Exception error) {},
+    );
 
     setSuccess();
   }
