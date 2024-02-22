@@ -95,6 +95,9 @@ class CustomTextField extends StatelessWidget {
   /// Pass the [TextInputType] to the textfield.
   final TextInputType? keyboardType;
 
+  /// Font size for the text field label.
+  final double? labelFontSize;
+
   /// Textfield label name. if [hasLabelText] is false, this value will not be used anywhere.
   final String? labelText;
 
@@ -119,9 +122,6 @@ class CustomTextField extends StatelessWidget {
 
   /// Pass true to enable the obscuring to the textfield
   final ValueNotifier<bool> _isPasswordHidden = ValueNotifier<bool>(false);
-
-  /// Font size for the text field label.
-  final double? labelFontSize;
 
   InputBorder _enabledBorder() => OutlineInputBorder(
         gapPadding: AppValues.double_28,
@@ -160,113 +160,118 @@ class CustomTextField extends StatelessWidget {
       _isPasswordHidden.value = true;
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        if (labelText != null && hasLabelText)
-          Container(
-            margin: EdgeInsets.only(left: AppValues.double_3.h, bottom: AppValues.double_6.h),
-            child: Text(
-              labelText!,
-              style: labelFontSize != null ? AppStyles.h5.copyWith(fontSize: labelFontSize!.sp) : AppStyles.h5,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppValues.double_5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          if (labelText != null && hasLabelText)
+            Container(
+              margin: EdgeInsets.only(left: AppValues.double_3.h, bottom: AppValues.double_6.h),
+              child: Text(
+                labelText!,
+                style: labelFontSize != null ? AppStyles.h5.copyWith(fontSize: labelFontSize!.sp) : AppStyles.h5,
+              ),
             ),
-          ),
-        ValueListenableBuilder<bool>(
-          valueListenable: _isPasswordHidden,
-          builder: (final BuildContext context, final bool value, final Widget? child) => TextFormField(
-            autofocus: autoFocus,
-            controller: textEditingController,
-            validator: (final String? input) {
-              /// If isNotMandatory is true, validation will be disabled
-              if (input!.isEmpty && isNotMandatory) {
-                return null;
-              }
+          ValueListenableBuilder<bool>(
+            valueListenable: _isPasswordHidden,
+            builder: (final BuildContext context, final bool value, final Widget? child) => TextFormField(
+              autofocus: autoFocus,
+              controller: textEditingController,
+              validator: (final String? input) {
+                /// If isNotMandatory is true, validation will be disabled
+                if (input!.isEmpty && isNotMandatory) {
+                  return null;
+                }
 
-              /// General validation for empty field
-              if (input.isEmpty) {
-                return AppStrings.generalFieldEmptyError;
-              }
+                /// General validation for empty field
+                if (input.isEmpty) {
+                  return AppStrings.generalFieldEmptyError;
+                }
 
-              final String? error = validator?.call(input);
+                final String? error = validator?.call(input);
 
-              return error;
-            },
-            focusNode: focusNode,
-            onChanged: onChanged,
-            onTapOutside: (final PointerDownEvent event) {
-              FocusScope.of(context).unfocus();
-            },
-            maxLength: maxLength,
-            style: AppStyles.norm_5,
-            enableSuggestions: false,
-            autocorrect: false,
-            maxLines: maxLines,
-            inputFormatters: inputFormatters,
-            obscureText: _isPasswordHidden.value && isPasswordField,
-            obscuringCharacter: '●',
-            textInputAction: textInputAction ?? TextInputAction.done,
-            onFieldSubmitted: (final String text) {
-              onSubmit?.call(text);
-            },
-            keyboardType: keyboardType,
-            decoration: InputDecoration(
-              enabled: isEnabled,
-              errorMaxLines: 2,
-              filled: true,
-              prefixIconConstraints: const BoxConstraints(maxWidth: AppValues.double_64),
-              prefixIcon: isMobileField
-                  ? SizedBox(
-                      width: AppValues.double_64.h,
-                      height: AppValues.double_45.h,
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '+60',
-                            style: AppStyles.norm_5,
-                          ),
-                          VerticalDivider(
-                            thickness: 1,
-                            color: AppColors.greyPrimary,
-                          ),
-                        ],
-                      ),
-                    )
-                  : null,
-              suffixIcon: isPasswordField
-                  ? InkWell(
-                      onTap: () {
-                        _isPasswordHidden.value = !_isPasswordHidden.value;
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 17, right: 20, bottom: 14),
-                        child: AssetImageView(
-                          fileName: _isPasswordHidden.value ? '' : '',
+                return error;
+              },
+              focusNode: focusNode,
+              onChanged: onChanged,
+              onTapOutside: (final PointerDownEvent event) {
+                FocusScope.of(context).unfocus();
+              },
+              maxLength: maxLength,
+              style: AppStyles.norm_5,
+              enableSuggestions: false,
+              autocorrect: false,
+              maxLines: maxLines,
+              inputFormatters: inputFormatters,
+              obscureText: _isPasswordHidden.value && isPasswordField,
+              obscuringCharacter: '●',
+              textInputAction: textInputAction ?? TextInputAction.done,
+              onFieldSubmitted: (final String text) {
+                onSubmit?.call(text);
+              },
+              keyboardType: keyboardType,
+              decoration: InputDecoration(
+                enabled: isEnabled,
+                errorMaxLines: 2,
+                filled: true,
+                prefixIconConstraints: const BoxConstraints(maxWidth: AppValues.double_64),
+                prefixIcon: isMobileField
+                    ? SizedBox(
+                        width: AppValues.double_64.h,
+                        height: AppValues.double_45.h,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '+60',
+                              style: AppStyles.norm_5,
+                            ),
+                            VerticalDivider(
+                              thickness: 1,
+                              color: AppColors.greyPrimary,
+                            ),
+                          ],
                         ),
-                      ),
-                    )
-                  : suffixIcon,
-              fillColor: isEnabled ? AppColors.whitePrimary : AppColors.greyPrimary,
-              hintText: hintText,
-              enabledBorder: _enabledBorder(),
-              focusedBorder: _focusedBorder(),
-              disabledBorder: _disabledBorder(),
-              hintStyle: AppStyles.norm_5.copyWith(color: AppColors.greyPrimary),
-              errorBorder: _errorBorder(),
-              focusedErrorBorder: _focusedBorder(),
-              counterStyle: const TextStyle(color: Colors.transparent),
-              contentPadding: const EdgeInsets.only(
-                left: AppValues.double_16,
-                right: AppValues.double_16,
+                      )
+                    : null,
+                suffixIcon: isPasswordField
+                    ? InkWell(
+                        onTap: () {
+                          _isPasswordHidden.value = !_isPasswordHidden.value;
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 17, right: 20, bottom: 14),
+                          child: AssetImageView(
+                            fileName: _isPasswordHidden.value ? '' : '',
+                          ),
+                        ),
+                      )
+                    : suffixIcon,
+                fillColor: isEnabled ? AppColors.whitePrimary : AppColors.greyPrimary,
+                hintText: hintText,
+                enabledBorder: _enabledBorder(),
+                focusedBorder: _focusedBorder(),
+                disabledBorder: _disabledBorder(),
+                hintStyle: AppStyles.norm_5.copyWith(
+                  color: AppColors.greyPrimary,
+                ),
+                errorBorder: _errorBorder(),
+                focusedErrorBorder: _focusedBorder(),
+                counterStyle: const TextStyle(color: Colors.transparent),
+                contentPadding: const EdgeInsets.only(
+                  left: AppValues.double_16,
+                  right: AppValues.double_16,
+                ),
               ),
             ),
           ),
-        ),
-        if (hasBottomSpacing)
-          SizedBox(
-            height: AppValues.double_20.h,
-          ),
-      ],
+          if (hasBottomSpacing)
+            SizedBox(
+              height: AppValues.double_20.h,
+            ),
+        ],
+      ),
     );
   }
 }
