@@ -11,7 +11,7 @@ class AddContactsView extends BaseView<ContactsController> {
   String? appBarTitle() => AppStrings.addContactAppBarTitle;
 
   @override
-  Widget body(final BuildContext context, final BaseController controller) => SingleChildScrollView(
+  Widget body(final BuildContext context, final ContactsController controller) => SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppValues.double_10),
           child: Column(
@@ -19,27 +19,51 @@ class AddContactsView extends BaseView<ContactsController> {
               CustomTextField(
                 labelText: AppStrings.name,
                 hintText: AppStrings.contactName,
-                inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp('[a-zA-Z ]'))],
+                textEditingController: controller.nameController,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(
+                    RegExp('[a-zA-Z ]'),
+                  ),
+                ],
               ),
               CustomTextField(
-                maxLength: 2,
                 labelText: AppStrings.age,
                 hintText: AppStrings.age,
+                textEditingController: controller.ageController,
                 inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
                 keyboardType: TextInputType.number,
               ),
               CustomTextField(
                 labelText: AppStrings.occupation,
                 hintText: AppStrings.occupation,
+                textEditingController: controller.occupationController,
+              ),
+              CustomTextField(
+                labelText: AppStrings.relationship,
+                hintText: AppStrings.relationship,
+                textEditingController: controller.relationshipController,
               ),
               CustomTextField(
                 labelText: AppStrings.location,
                 hintText: AppStrings.location,
+                textEditingController: controller.locationController,
               ),
               CustomTextField(
                 labelText: AppStrings.interest,
                 hintText: AppStrings.interest,
-                maxLines: 3,
+                textEditingController: controller.interestController,
+              ),
+              CustomTextField(
+                labelText: AppStrings.meansOfCommunication,
+                hintText: AppStrings.meansOfCommunication,
+                textEditingController: controller.communicationController,
+              ),
+              const SizedBox(
+                height: AppValues.double_50,
+              ),
+              SingleButton(
+                buttonName: AppStrings.addContactAppBarTitle,
+                onPressed: () async => controller.addContact(),
               ),
             ],
           ),

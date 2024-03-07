@@ -22,13 +22,5 @@ class ContactRepositoryImpl with ApiCallHandler implements ContactRepository {
   // ignore: prefer_expression_function_bodies
   Future<Either<Exception, List<ContactItem>>> getContacts() async {
     return callApiWithErrorHandler<Exception, List<ContactItem>>(() => remoteDataSource.getContact());
-
-    // try {
-    //   final List<ContactItem> result = await remoteDataSource.getContact();
-
-    //   return Right(result);
-    // } on Exception catch (error) {
-    //   return Left(error);
-    // }
   }
 }

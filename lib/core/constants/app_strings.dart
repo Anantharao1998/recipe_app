@@ -15,7 +15,9 @@ class AppStrings {
   static const String events = 'Events';
   static const String generalFieldEmptyError = 'This is a mandatory field. Must not be empty.';
   static const String interest = 'Interests';
+  static const String relationship = 'Relationship';
   static const String location = 'Location';
+  static const String meansOfCommunication = 'Means of communication';
   static const String name = 'Name';
   static const String noInternetConnection = 'Please have an active internet connection.';
   static const String occupation = 'Occupation';
