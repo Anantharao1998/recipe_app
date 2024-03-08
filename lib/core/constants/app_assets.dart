@@ -1,10 +1,12 @@
-/// App Assets
+// ignore_for_file: public_member_api_docs
+
 class AppAssets {
   AppAssets._(); // Prevents instantiating
 
-  /// Homepage background image
-  static const String backgroundImage = '${_core}phone_background.jpg';
+  static const String backgroundImage = '${_jpgPath}phone_background.jpg';
+  static const String networkLottie = '${_jsonPath}networking.json';
 
-  /// Core path
-  static const String _core = 'assets/core/';
+  static const String _jpgPath = 'assets/jpg/';
+  static const String _jsonPath = 'assets/json/';
+  static const String _pngPath = 'assets/png/';
 }

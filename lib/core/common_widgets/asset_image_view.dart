@@ -13,6 +13,8 @@ class AssetImageView extends StatelessWidget {
     this.color,
     this.scale,
     this.alignment,
+    this.opacity,
+    this.reverseLottie = true,
     super.key,
   });
 
@@ -21,13 +23,20 @@ class AssetImageView extends StatelessWidget {
   final String fileName;
   final BoxFit? fit;
   final double? height;
+  final double? opacity;
+  final bool? reverseLottie;
   final double? scale;
   final double? width;
 
   Widget _getView() {
     final String mimType = fileName.split('.').last;
 
-    return mimType.isEmpty ? Icon(Icons.image_not_supported_outlined, size: width, color: color) : _buildImageView(mimType);
+    return mimType.isEmpty
+        ? Icon(Icons.image_not_supported_outlined, size: width, color: color)
+        : Opacity(
+            opacity: opacity ?? 1,
+            child: _buildImageView(mimType),
+          );
   }
 
   Widget _buildImageView(final String mimType) {
@@ -42,15 +51,6 @@ class AssetImageView extends StatelessWidget {
           colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
         );
       case 'png':
-        return Image.asset(
-          fileName,
-          fit: fit,
-          height: height,
-          width: width,
-          alignment: alignment ?? Alignment.center,
-          color: color,
-          scale: scale,
-        );
       case 'jpg':
       case 'jpeg':
         return Image.asset(
@@ -69,6 +69,7 @@ class AssetImageView extends StatelessWidget {
           width: width,
           height: height,
           repeat: true,
+          reverse: reverseLottie,
         );
       default:
         return Icon(

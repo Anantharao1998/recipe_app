@@ -19,6 +19,7 @@ export 'constants/app_values.dart';
 export 'constants/enums/item_state.dart';
 export 'constants/enums/view_state.dart';
 export 'domain/entities/item_tile_entity.dart';
+export 'extensions/animation_extension.dart';
 export 'extensions/datetime_extension.dart';
 export 'extensions/exception_extension.dart';
 export 'extensions/textstyle_extension.dart';

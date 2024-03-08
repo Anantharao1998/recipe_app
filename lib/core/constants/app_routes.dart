@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemondb/features/contacts/contacts.dart';
 import 'package:pokemondb/features/events/events.dart';
 import 'package:pokemondb/features/homepage/homepage.dart';
+import 'package:pokemondb/features/splash/splash.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -11,6 +12,7 @@ class AppRoutes {
   static Route<dynamic> routes(final RouteSettings settings) {
     switch (settings.name) {
       case Routes.initialRoute:
+        return _pageRoute(SplashView(), settings);
       case Routes.home:
         return _pageRoute(HomeView(), settings);
       case Routes.eventsList:

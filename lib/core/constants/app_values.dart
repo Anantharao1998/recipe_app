@@ -5,6 +5,12 @@ library;
 class AppValues {
   AppValues._();
 
+  static const double doublePoint_1 = 0.1;
+  static const double doublePoint_2 = 0.2;
+  static const double doublePoint_3 = 0.3;
+  static const double doublePoint_5 = 0.5;
+  static const double doublePoint_7 = 0.7;
+  static const double doublePoint_8 = 0.8;
   static const double double_0 = 0;
   static const double double_1 = 1;
   static const double double_10 = 10;
