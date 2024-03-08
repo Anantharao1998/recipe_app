@@ -13,9 +13,17 @@ class SplashView extends BaseView<SplashController> {
             fileName: AppAssets.networkLottie,
           ),
           const Text(
-            'Slide Down Animation',
+            'Welcome to BizApp',
             style: TextStyle(fontSize: 20),
           ).slideDown(),
+          const Spacer(),
+          SingleButton(
+            buttonName: 'Go to Home',
+            onPressed: () async => navigationService.navigateTo(Routes.home),
+          ),
+          const SizedBox(
+            height: AppValues.double_10,
+          ),
         ],
       );
 
