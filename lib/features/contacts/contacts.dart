@@ -1,9 +1,0 @@
-export 'data/models/contact_item_model.dart';
-export 'data/repositories/contact_repository_impl.dart';
-export 'domain/entities/contact_entity.dart';
-export 'domain/enums/occupation_category_enum.dart';
-export 'domain/repositories/contact_repository.dart';
-export 'presentation/bindings/contacts_binding.dart';
-export 'presentation/controllers/contacts_controller.dart';
-export 'presentation/views/add_contacts_view.dart';
-export 'presentation/views/contacts_view.dart';
