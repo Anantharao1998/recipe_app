@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
-import 'package:pokemondb/features/homepage/homepage.dart';
-import 'package:pokemondb/features/splash/splash.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
+import 'package:recipe_app/features/homepage/homepage.dart';
+import 'package:recipe_app/features/splash/splash.dart';
 export 'package:get_it/get_it.dart';
 
 /// GetIt instance

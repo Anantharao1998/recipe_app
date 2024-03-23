@@ -1,5 +1,5 @@
-import 'package:pokemondb/dependency_injection.dart';
-import 'package:pokemondb/features/homepage/homepage.dart';
+import 'package:recipe_app/dependency_injection.dart';
+import 'package:recipe_app/features/homepage/homepage.dart';
 
 /// HomeBindings
 void homeBindings(final GetIt getIt) {

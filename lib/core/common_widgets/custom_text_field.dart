@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pokemondb/core/core.dart';
+import 'package:recipe_app/core/core.dart';
 
 /// Generic textfield for the app
 class CustomTextField extends StatelessWidget {

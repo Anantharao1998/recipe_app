@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokemondb/core/constants/app_styles.dart';
+import 'package:recipe_app/core/constants/app_styles.dart';
 
 /// SingleButton widget
 class SingleButton extends StatelessWidget {

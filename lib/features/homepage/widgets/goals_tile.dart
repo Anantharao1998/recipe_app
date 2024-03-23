@@ -1,5 +1,5 @@
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/homepage/homepage.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/homepage/homepage.dart';
 
 /// Today's goal tile
 class GoalsTile extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:pokemondb/core/core.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/core/core.dart';
 
 /// BaseView for general use
 abstract class BaseView<T extends BaseController> extends StatelessWidget {

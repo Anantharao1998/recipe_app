@@ -1,4 +1,4 @@
-import 'package:pokemondb/core/core.dart';
+import 'package:recipe_app/core/core.dart';
 
 /// Drawer for home
 class HomeDrawer extends StatelessWidget {

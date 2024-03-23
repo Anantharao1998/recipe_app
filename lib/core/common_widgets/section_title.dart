@@ -1,4 +1,4 @@
-import 'package:pokemondb/core/core.dart';
+import 'package:recipe_app/core/core.dart';
 
 /// Common Section Title widget
 class SectionTitle extends StatelessWidget {

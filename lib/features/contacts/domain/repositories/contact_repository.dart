@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
 
 /// Contact Repository abstract class
 abstract class ContactRepository {

@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
-import 'package:pokemondb/features/events/events.dart';
-import 'package:pokemondb/features/homepage/homepage.dart';
-import 'package:pokemondb/features/splash/splash.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
+import 'package:recipe_app/features/events/events.dart';
+import 'package:recipe_app/features/homepage/homepage.dart';
+import 'package:recipe_app/features/splash/splash.dart';
 
 class AppRoutes {
   AppRoutes._();

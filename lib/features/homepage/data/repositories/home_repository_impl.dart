@@ -1,4 +1,4 @@
-import 'package:pokemondb/features/homepage/homepage.dart';
+import 'package:recipe_app/features/homepage/homepage.dart';
 
 /// Implementation of [HomeRepository] class
 class HomeRepositoryImpl implements HomeRepository {

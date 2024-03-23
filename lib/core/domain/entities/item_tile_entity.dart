@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:pokemondb/core/core.dart';
+import 'package:recipe_app/core/core.dart';
 
 /// Generic Item Tile Entity
 class ItemTileEntity extends Equatable {

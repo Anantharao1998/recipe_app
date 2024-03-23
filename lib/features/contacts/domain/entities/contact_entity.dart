@@ -1,5 +1,5 @@
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
 
 /// Contact Item entity
 class ContactItem extends ItemTileEntity {

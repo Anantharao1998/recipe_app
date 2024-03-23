@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/dependency_injection.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/dependency_injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   await Firebase.initializeApp();
   // init dependency injection
   await init();

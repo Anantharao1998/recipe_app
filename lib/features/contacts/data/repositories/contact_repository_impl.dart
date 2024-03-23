@@ -1,9 +1,9 @@
 // ignore_for_file: always_specify_types
 
 import 'package:dartz/dartz.dart';
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
-import 'package:pokemondb/features/contacts/data/datasources/contact_remote_datasource.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
+import 'package:recipe_app/features/contacts/data/datasources/contact_remote_datasource.dart';
 
 /// Contact repository implementation
 class ContactRepositoryImpl with ApiCallHandler implements ContactRepository {

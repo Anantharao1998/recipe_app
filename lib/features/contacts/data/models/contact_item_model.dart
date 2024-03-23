@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
 
 part 'contact_item_model.g.dart';
 

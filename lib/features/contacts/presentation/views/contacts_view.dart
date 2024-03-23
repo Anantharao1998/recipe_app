@@ -1,6 +1,6 @@
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
 
 /// Contacts listing page
 class ContactsListing extends BaseView<ContactsController> {

@@ -5,18 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "pokemondb",
+            "name": "recipe_app",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug"
         },
         {
-            "name": "pokemondb (profile mode)",
+            "name": "recipe_app (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "pokemondb (release mode)",
+            "name": "recipe_app (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

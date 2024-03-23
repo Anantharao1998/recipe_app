@@ -1,11 +1,11 @@
-// ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
-import 'package:pokemondb/dependency_injection.dart';
-
 import 'package:provider/provider.dart';
+import 'package:recipe_app/dependency_injection.dart';
 
+/// ProviderViewBuilder class used to manage base_view state.
 class ProviderViewBuilder<T extends ChangeNotifier> extends StatefulWidget {
+  /// ProviderViewBuilder constructor
   const ProviderViewBuilder({
     required this.builder,
     super.key,
@@ -14,9 +14,13 @@ class ProviderViewBuilder<T extends ChangeNotifier> extends StatefulWidget {
     this.provider,
   });
 
+  /// Handles app lifecycle
   final Function(AppLifecycleState, T)? didChangeAppLifeCycle;
+  /// Callback to be passed onInitState of a page.
   final Function(T provider)? onInit;
+  /// Builder callback returns current Context and Controller [T] instance. 
   final Widget Function(BuildContext context, T value) builder;
+  /// Pass Provider instance. Can be null.
   final T? provider;
 
   @override

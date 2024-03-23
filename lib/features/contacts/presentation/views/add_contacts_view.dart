@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/contacts/contacts.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/contacts/contacts.dart';
 
 /// Add Contacts View
 class AddContactsView extends BaseView<ContactsController> {

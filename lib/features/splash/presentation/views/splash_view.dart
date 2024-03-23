@@ -1,5 +1,5 @@
-import 'package:pokemondb/core/core.dart';
-import 'package:pokemondb/features/splash/splash.dart';
+import 'package:recipe_app/core/core.dart';
+import 'package:recipe_app/features/splash/splash.dart';
 
 /// Splash View class
 class SplashView extends BaseView<SplashController> {
