@@ -12,6 +12,7 @@ class RecipeTile extends StatelessWidget {
   Widget build(final BuildContext context) => Padding(
         padding: const EdgeInsets.all(AppValues.double_5),
         child: ListTile(
+          onTap: () async => navigationService.navigateTo(Routes.recipeDetail, args: recipe),
           tileColor: AppColors.primaryColor,
           title: (recipe.name != null)
               ? Text(
@@ -19,10 +20,10 @@ class RecipeTile extends StatelessWidget {
                 )
               : const SizedBox(),
           leading: (recipe.image != null)
-              ? SizedBox(
-                  height: AppValues.double_30,
-                  width: AppValues.double_30,
+              ? Padding(
+                  padding: const EdgeInsets.all(AppValues.double_10),
                   child: ImageView(
+                    width: AppValues.double_30,
                     file: recipe.image!,
                     fit: BoxFit.contain,
                   ),

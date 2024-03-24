@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:flutter/material.dart';
+import 'package:recipe_app/features/recipe_detail/recipe_detail.dart';
 import 'package:recipe_app/features/recipe_listing/recipe_listing.dart';
 
 class AppRoutes {
@@ -10,6 +11,8 @@ class AppRoutes {
     switch (settings.name) {
       case Routes.initialRoute:
         return _pageRoute(RecipeListingView(), settings);
+      case Routes.recipeDetail:
+        return _pageRoute(RecipeDetailView(), settings);
       default:
         return MaterialPageRoute<Widget>(
           builder: (final _) => Scaffold(
@@ -29,4 +32,5 @@ class Routes {
   Routes._();
 
   static const String initialRoute = '/';
+  static const String recipeDetail = '/recipeDetail';
 }

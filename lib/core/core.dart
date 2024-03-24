@@ -26,4 +26,5 @@ export 'extensions/textstyle_extension.dart';
 export 'extensions/widget_extension.dart';
 export 'mixins/error_handler.dart';
 export 'mixins/snack_bar_helper.dart';
+export 'services/hive_services.dart';
 export 'services/navigation_service.dart';
