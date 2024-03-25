@@ -3,7 +3,13 @@ import 'package:recipe_app/core/core.dart';
 /// Recipe Tile widget
 class RecipeTile extends StatelessWidget {
   /// constructor
-  const RecipeTile({required this.recipe, super.key});
+  const RecipeTile({required this.recipe, required this.onDelete, required this.onUpdate, super.key});
+
+  /// Delete recipe callback
+  final VoidCallback onDelete;
+
+  /// Update recipe callback
+  final VoidCallback onUpdate;
 
   /// Recipe object
   final RecipeInfo recipe;
@@ -31,6 +37,13 @@ class RecipeTile extends StatelessWidget {
               : const Icon(
                   Icons.image_not_supported_outlined,
                 ),
+          trailing: Column(
+            children: <Widget>[
+              const Icon(Icons.edit).onTap(onTap: () => onUpdate.call()),
+              const Spacer(),
+              const Icon(Icons.delete).onTap(onTap: () => onDelete.call()),
+            ],
+          ),
         ),
       );
 }

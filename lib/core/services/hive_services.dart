@@ -36,4 +36,9 @@ class HiveService {
     final Box box = await _box;
     await box.putAt(index, newData);
   }
+
+  Future<void> deleteData(final int index) async {
+    final box = await _box;
+    await box.deleteAt(index);
+  }
 }

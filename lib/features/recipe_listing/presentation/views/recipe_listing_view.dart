@@ -44,6 +44,12 @@ class RecipeListingView extends BaseView<RecipeListingController> {
                         ) =>
                             RecipeTile(
                           recipe: controller.recipeList[index],
+                          onDelete: () {
+                            // TODO: Delete recipe
+                          },
+                          onUpdate: () {
+                            // TODO: Update recipe
+                          },
                         ),
                       ),
                 selector: (
