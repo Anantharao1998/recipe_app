@@ -6,10 +6,13 @@ import 'package:recipe_app/core/core.dart';
 /// Common Image picker widget
 class ImagePickerWidget extends StatefulWidget {
   /// constructor
-  const ImagePickerWidget({required this.onImagePick, super.key});
+  const ImagePickerWidget({required this.onImagePick, this.imagePath, super.key});
 
   /// Callback on image picked
   final Function(XFile picture) onImagePick;
+
+  /// Can pass image to this widget
+  final String? imagePath;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -22,7 +25,6 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   Future<void> _pickImage(final ImageSource source) async {
     final XFile? pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
 
-
     setState(() {
       if (pickedImage != null) {
         widget.onImagePick.call(pickedImage);
@@ -30,6 +32,16 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         _image = File(pickedImage.path);
       }
     });
+  }
+
+  @override
+  void initState() {
+    if (widget.imagePath != null) {
+      if (widget.imagePath!.startsWith('/')) {
+        _image = File(widget.imagePath!);
+      }
+    }
+    super.initState();
   }
 
   @override

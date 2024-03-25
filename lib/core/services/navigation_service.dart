@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types, type_annotate_public_apis
+
 import 'package:flutter/material.dart';
 
 /// App Navigation Service
@@ -15,7 +17,7 @@ class NavigationService {
       _navigationKey.currentState!.pushNamed(routeName, arguments: args);
 
   /// Pop the current screen
-  void pop() => _navigationKey.currentState!.pop();
+  void pop<T>({final T? object}) => _navigationKey.currentState!.pop<T>(object);
 }
 
 /// Global instane of navigation service

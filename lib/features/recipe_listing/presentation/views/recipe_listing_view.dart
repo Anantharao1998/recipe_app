@@ -50,12 +50,16 @@ class RecipeListingView extends BaseView<RecipeListingController> {
                               final int index,
                             ) =>
                                 RecipeTile(
+                                  canChange: controller.selectedRecipe == null,
                               recipe: controller.recipeList[index],
                               onDelete: () async {
                                 await controller.deleteRecipe(index);
                               },
-                              onUpdate: () {
-                                // TODO: Update recipe
+                              onUpdate: () async {
+                                await navigationService
+                                    .navigateTo(Routes.addRecipe, args: {'recipe': controller.recipeList[index], 'index': index}).then((final value) async {
+                                  await controller.getRecipes(rebuild: true);
+                                });
                               },
                             ),
                           ),
@@ -76,8 +80,7 @@ class RecipeListingView extends BaseView<RecipeListingController> {
           controller.selectedRecipe = null;
 
           await navigationService.navigateTo(Routes.addRecipe).then((final value) async {
-            controller.masterRecipeList.clear();
-            await controller.getRecipes();
+            await controller.getRecipes(rebuild: true);
           });
         },
         label: const Text(
@@ -88,6 +91,6 @@ class RecipeListingView extends BaseView<RecipeListingController> {
 
   @override
   Future<void> onInit(final RecipeListingController provider, final BuildContext context) async {
-    await provider.getRecipes();
+    await provider.getRecipes(rebuild: true);
   }
 }

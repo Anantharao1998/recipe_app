@@ -14,6 +14,20 @@ class AddRecipeView extends BaseView<RecipeListingController> {
   String? appBarTitle() => AppStrings.addRecipe;
 
   @override
+  void onInit(final RecipeListingController provider, final BuildContext context) {
+    provider.newRecipe = (ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?)?['recipe'];
+
+          provider.newRecipeIndex = (ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?)?['index'] ;
+
+    if (provider.newRecipe != null) {
+      provider.fillRecipe();
+
+    }
+
+    super.onInit(provider, context);
+  }
+
+  @override
   Widget body(final BuildContext context, final RecipeListingController controller) => Padding(
         padding: const EdgeInsets.all(AppValues.double_20),
         child: SingleChildScrollView(
@@ -68,15 +82,22 @@ class AddRecipeView extends BaseView<RecipeListingController> {
                         itemCount: length,
                         itemBuilder: (final BuildContext context, final int index) => Row(
                           children: <Widget>[
-                            Text(
-                              '${index + 1}. ${controller.ingredientsList[index]}',
-                              style: AppStyles.norm_5,
+                            Expanded(
+                              flex: 7,
+                              child: Text(
+                                '${index + 1}. ${controller.ingredientsList[index]}',
+                                style: AppStyles.norm_5,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                             const Spacer(),
-                            Text(
-                              AppStrings.remove,
-                              style: AppStyles.h6.copyWith(color: AppColors.bluePrimary),
-                            ).onTap(onTap: () => controller.removeIngredient(index)),
+                            Expanded(
+                              child: Text(
+                                AppStrings.remove,
+                                style: AppStyles.h6.copyWith(color: AppColors.bluePrimary),
+                              ).onTap(onTap: () => controller.removeIngredient(index)),
+                            ),
                           ],
                         ),
                       ),
@@ -120,6 +141,7 @@ class AddRecipeView extends BaseView<RecipeListingController> {
               ),
 
               ImagePickerWidget(
+                imagePath: controller.imagePath,
                 onImagePick: (final XFile picture) async => controller.saveImage(picture),
               ),
 
@@ -128,11 +150,23 @@ class AddRecipeView extends BaseView<RecipeListingController> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  if (controller.name.text.isEmpty ||
+                  if (controller.newRecipe != null) {
+                    // TODO: Move to controller to create update recipeInfo
+                    final RecipeInfo newRecipe = RecipeInfo(
+                      ingredients: controller.ingredientsList,
+                      name: controller.name.text,
+                      steps: controller.steps.text,
+                      image: controller.imagePath,
+                      type: controller.selectedAddRecipe!.toRecipeTypeEnum(),
+                    );
+
+                    await controller.updateRecipe(controller.newRecipeIndex!, newRecipe: newRecipe);
+
+                    navigationService.pop();
+                  } else if (controller.name.text.isEmpty ||
                       controller.ingredientsList.isEmpty ||
                       controller.selectedAddRecipe == null ||
-                      controller.steps.text.isEmpty ||
-                      controller.imagePath.isEmpty) {
+                      controller.steps.text.isEmpty) {
                     showErrorSnackBar('Incomplete recipe detail');
                   } else {
                     await controller.addRecipe();

@@ -3,7 +3,10 @@ import 'package:recipe_app/core/core.dart';
 /// Recipe Tile widget
 class RecipeTile extends StatelessWidget {
   /// constructor
-  const RecipeTile({required this.recipe, required this.onDelete, required this.onUpdate, super.key});
+  const RecipeTile({required this.recipe, required this.onDelete, required this.onUpdate, this.canChange = true, super.key});
+
+  /// Recipe cant be delete or updated when filtering
+  final bool canChange;
 
   /// Delete recipe callback
   final VoidCallback onDelete;
@@ -37,22 +40,24 @@ class RecipeTile extends StatelessWidget {
               : const Icon(
                   Icons.image_not_supported_outlined,
                 ),
-          trailing: Padding(
-            padding: const EdgeInsets.all(AppValues.double_5),
-            child: Column(
-              children: <Widget>[
-                const Icon(
-                  Icons.edit,
-                  size: AppValues.double_20,
-                ).onTap(onTap: () => onUpdate.call()),
-                const Spacer(),
-                const Icon(
-                  Icons.delete,
-                  size: AppValues.double_20,
-                ).onTap(onTap: () => onDelete.call()),
-              ],
-            ),
-          ),
+          trailing: canChange
+              ? Padding(
+                  padding: const EdgeInsets.all(AppValues.double_5),
+                  child: Column(
+                    children: <Widget>[
+                      const Icon(
+                        Icons.edit,
+                        size: AppValues.double_20,
+                      ).onTap(onTap: () => onUpdate.call()),
+                      const Spacer(),
+                      const Icon(
+                        Icons.delete,
+                        size: AppValues.double_20,
+                      ).onTap(onTap: () => onDelete.call()),
+                    ],
+                  ),
+                )
+              : const SizedBox(),
         ),
       );
 }

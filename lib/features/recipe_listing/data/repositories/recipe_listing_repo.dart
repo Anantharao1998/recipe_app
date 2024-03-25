@@ -39,4 +39,12 @@ class RecipeListingRepository extends HiveService {
   Future<void> deleteRecipe(final int index) async {
     await deleteData(index);
   }
+
+  /// Update recipe
+  Future<void> updateRecipe({
+    required final int index,
+    required final RecipeInfo recipe,
+  }) async {
+    await updateData(index, recipe.toJson());
+  }
 }

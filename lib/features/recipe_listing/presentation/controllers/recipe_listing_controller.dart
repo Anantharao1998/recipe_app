@@ -12,8 +12,11 @@ class RecipeListingController extends BaseController {
   /// Current selected recipe
   RecipeType? currentRecipe;
 
+  /// SelectedRecipe for update
+  RecipeInfo? newRecipe;
+
   /// Recipe image
-  String imagePath = '';
+  String? imagePath;
 
   /// Recipe ingredient
   final TextEditingController ingredient = TextEditingController();
@@ -23,6 +26,9 @@ class RecipeListingController extends BaseController {
 
   /// Master Recipe List
   final List<RecipeInfo> masterRecipeList = <RecipeInfo>[];
+
+  /// Index of the recipe to be updated
+  int? newRecipeIndex;
 
   /// Recipe name
   final TextEditingController name = TextEditingController();
@@ -55,24 +61,20 @@ class RecipeListingController extends BaseController {
     /// Calls API (in this case, Hive) and gets it's response.
     await repository.fetchRecipes().onResponse(
       (final List<RecipeInfo> result) {
-        if (selectedRecipe == null) {
-          if (masterRecipeList.isEmpty) {
-            masterRecipeList.addAll(result);
-          } else if (rebuild) {
-            masterRecipeList.clear();
-
-            masterRecipeList.addAll(result);
-          }
-
+        if (rebuild) {
+          /// updates masterRecipeList
+          masterRecipeList.clear();
           recipeList.clear();
 
-          recipeList.addAll(masterRecipeList);
+          masterRecipeList.addAll(result);
+          recipeList.addAll(result);
+
         } else {
           recipeList.clear();
 
           recipeList.addAll(
             masterRecipeList.where(
-              (final RecipeInfo recipe) => recipe.type == selectedRecipe!.toRecipeTypeEnum(),
+              (final RecipeInfo recipe) => recipe.type == selectedRecipe?.toRecipeTypeEnum(),
             ),
           );
         }
@@ -137,7 +139,7 @@ class RecipeListingController extends BaseController {
   Future<void> onRecipeSelect(final value, final String? name) async {
     selectedRecipe = name;
 
-    await getRecipes();
+    await getRecipes(rebuild: value == null);
 
     notifyListeners();
   }
@@ -154,5 +156,25 @@ class RecipeListingController extends BaseController {
     await repository.deleteRecipe(index);
 
     await getRecipes(rebuild: true);
+  }
+
+  /// Update recipe
+  Future<void> updateRecipe(final int index, {required final RecipeInfo newRecipe}) async {
+    await repository.updateRecipe(index: index, recipe: newRecipe);
+
+    await getRecipes(rebuild: true);
+  }
+
+  /// Fills the field with old recipe details
+  void fillRecipe() {
+    name.text = newRecipe!.name ?? '';
+
+    imagePath = newRecipe!.image ?? '';
+
+    ingredientsList.addAll(newRecipe!.ingredients ?? []);
+
+    steps.text = newRecipe!.steps ?? '';
+
+    selectedAddRecipe = newRecipe!.type!.toStringValue();
   }
 }
