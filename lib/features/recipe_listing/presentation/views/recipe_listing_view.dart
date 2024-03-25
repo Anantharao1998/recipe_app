@@ -36,22 +36,29 @@ class RecipeListingView extends BaseView<RecipeListingController> {
               child: Selector<RecipeListingController, ViewState>(
                 builder: (final BuildContext context, final state, final __) => state == ViewState.loading
                     ? const Center(child: CircularProgressIndicator())
-                    : ListView.builder(
-                        itemCount: controller.recipeList.length,
-                        itemBuilder: (
-                          final BuildContext context,
-                          final int index,
-                        ) =>
-                            RecipeTile(
-                          recipe: controller.recipeList[index],
-                          onDelete: () async {
-                            await controller.deleteRecipe(index);
-                          },
-                          onUpdate: () {
-                            // TODO: Update recipe
-                          },
-                        ),
-                      ),
+                    : controller.recipeList.isEmpty
+                        ? const SizedBox(
+                            height: AppValues.double_40,
+                            child: Center(
+                              child: Text(AppStrings.noRecipes),
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: controller.recipeList.length,
+                            itemBuilder: (
+                              final BuildContext context,
+                              final int index,
+                            ) =>
+                                RecipeTile(
+                              recipe: controller.recipeList[index],
+                              onDelete: () async {
+                                await controller.deleteRecipe(index);
+                              },
+                              onUpdate: () {
+                                // TODO: Update recipe
+                              },
+                            ),
+                          ),
                 selector: (
                   final BuildContext context,
                   final RecipeListingController controller,

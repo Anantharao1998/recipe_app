@@ -18,6 +18,7 @@ class AppStrings {
   static const String recipesList = 'RecipesList';
   static const String remove = 'Remove';
   static const String selectRecipeType = 'Select recipe type';
+  static const String noRecipes = 'There is no recipes to show';
   static const String submit = 'Submit';
   static const String pickImage = 'Add Recipe Picture';
 

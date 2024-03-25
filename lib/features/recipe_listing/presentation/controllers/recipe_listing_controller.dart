@@ -46,7 +46,7 @@ class RecipeListingController extends BaseController {
   final TextEditingController steps = TextEditingController();
 
   /// Get recipes
-  Future<void> getRecipes() async {
+  Future<void> getRecipes({final bool rebuild = false}) async {
     recipeState = ViewState.loading;
     notifyListeners();
 
@@ -57,6 +57,10 @@ class RecipeListingController extends BaseController {
       (final List<RecipeInfo> result) {
         if (selectedRecipe == null) {
           if (masterRecipeList.isEmpty) {
+            masterRecipeList.addAll(result);
+          } else if (rebuild) {
+            masterRecipeList.clear();
+
             masterRecipeList.addAll(result);
           }
 
@@ -149,6 +153,6 @@ class RecipeListingController extends BaseController {
   Future<void> deleteRecipe(final int index) async {
     await repository.deleteRecipe(index);
 
-    await getRecipes();
+    await getRecipes(rebuild: true);
   }
 }

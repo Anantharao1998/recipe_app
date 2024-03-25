@@ -19,6 +19,7 @@ class RecipeDetailView extends BaseView<RecipeDetailController> {
 
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ImageView(
             file: _recipe?.image ?? '',
