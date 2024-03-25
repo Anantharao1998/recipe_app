@@ -13,6 +13,8 @@ class AppRoutes {
         return _pageRoute(RecipeListingView(), settings);
       case Routes.recipeDetail:
         return _pageRoute(RecipeDetailView(), settings);
+      case Routes.addRecipe:
+        return _pageRoute(AddRecipeView(), settings);
       default:
         return MaterialPageRoute<Widget>(
           builder: (final _) => Scaffold(
@@ -33,4 +35,5 @@ class Routes {
 
   static const String initialRoute = '/';
   static const String recipeDetail = '/recipeDetail';
+  static const String addRecipe = '/addRecipe';
 }

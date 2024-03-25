@@ -1,52 +1,39 @@
-import 'dart:io';
+// ignore_for_file: public_member_api_docs, always_specify_types, type_annotate_public_apis
 
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:io';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:recipe_app/core/core.dart';
 
-/// Hive services handles local database
-class HiveServices {
-  /// Init hive services
+class HiveService {
+  final Completer<Box> _completer = Completer<Box>();
+
   Future<void> initHive() async {
-    final Directory documentDir = await getApplicationDocumentsDirectory();
+    await _box;
+  }
 
-    try {
-      Hive.init(documentDir.path);
-    } on Exception catch (error) {
-      debugPrint(error.toString());
+  Future<Box> get _box async {
+    if (!_completer.isCompleted) {
+      final Directory appDocumentDir = await getApplicationDocumentsDirectory();
+      Hive.init(appDocumentDir.path);
+      final Box box = await Hive.openBox('myBox');
+      _completer.complete(box);
     }
+    return _completer.future;
   }
 
-  /// Creates a HiveBox and returns the instance. Existing instance if already created.
-  Future<LazyBox<T>?> createBox<T extends Map<String, dynamic>>(final String boxName) async {
-    try {
-      return await Hive.openLazyBox<T>(boxName);
-    } on Exception catch (error) {
-      debugPrint(error.toString());
-
-      return null;
-    }
+  Future<List<dynamic>> fetchData() async {
+    final Box box = await _box;
+    return box.values.toList();
   }
 
-  /// Puts item in the box.
-  Future<void> putInBox<T>({
-    required final String boxName,
-    required final Map<String, dynamic> item,
-    required final String key,
-  }) async {
-    final LazyBox<Map<String, dynamic>>? currentBox = await createBox(boxName);
-
-    await currentBox?.put(key, item);
+  Future<void> insertData(final data) async {
+    final Box box = await _box;
+    await box.add(data);
   }
 
-  /// Fetch Map from given box.
-  Future<Map<String, dynamic>?> getFromBox({
-    required final String boxName,
-    required final String key,
-  }) async {
-    final LazyBox<Map<String, dynamic>>? currentBox = await createBox(boxName);
-
-    return await currentBox?.get(key);
+  Future<void> updateData(final int index, final newData) async {
+    final Box box = await _box;
+    await box.putAt(index, newData);
   }
 }

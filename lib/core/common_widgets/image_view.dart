@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,12 +43,14 @@ class ImageView extends StatelessWidget {
             height: height,
             width: width,
           )
-        : mimType.isEmpty
-            ? Icon(Icons.image_not_supported_outlined, size: width, color: color)
-            : Opacity(
-                opacity: opacity ?? 1,
-                child: _buildImageView(mimType),
-              );
+        : (file.startsWith('/'))
+            ? _buildXFileImage(file)
+            : mimType.isEmpty
+                ? Icon(Icons.image_not_supported_outlined, size: width, color: color)
+                : Opacity(
+                    opacity: opacity ?? 1,
+                    child: _buildImageView(mimType),
+                  );
   }
 
   Widget _buildImageView(final String mimType) {
@@ -92,6 +96,12 @@ class ImageView extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => _getView();
+
+  Widget _buildXFileImage(final String file) {
+    final File image = File(file);
+
+    return Image.file(image);
+  }
 }
 
 class _NetworkImage extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/core/core.dart';
 
 /// BaseView for general use
-abstract class BaseView<T extends BaseController> extends StatelessWidget {
+abstract class BaseView<T extends BaseController> extends StatelessWidget with SnackBarHelper {
   /// BaseView for general use
   BaseView({this.hasAppBar = true, super.key});
 

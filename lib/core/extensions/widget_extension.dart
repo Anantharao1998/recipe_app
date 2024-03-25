@@ -14,7 +14,7 @@ extension WidgetExtension on Widget {
 
   /// Adds onTap callback to a widget
   Widget onTap({
-    final Function()? onTap,
+    required final Function()? onTap,
   }) =>
       InkWell(
         onTap: onTap,

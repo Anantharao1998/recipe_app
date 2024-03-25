@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:recipe_app/core/core.dart';
 
@@ -5,9 +6,9 @@ part 'recipe_info.g.dart';
 
 /// Recipe Info object
 @JsonSerializable()
-class RecipeInfo {
+class RecipeInfo extends Equatable {
   /// RecipeInfo constructor
-  RecipeInfo({this.type, this.ingredients, this.image, this.name, this.steps});
+  const RecipeInfo({this.type, this.ingredients, this.image, this.name, this.steps});
 
   /// Gets RecipeInfo instance from Map.
   factory RecipeInfo.fromJson(final Map<String, dynamic> json) => _$RecipeInfoFromJson(json);
@@ -29,4 +30,7 @@ class RecipeInfo {
 
   /// Returns Map of the object
   Map<String, dynamic> toJson() => _$RecipeInfoToJson(this);
+
+  @override
+  List<Object?> get props => <Object?>[image, name, ingredients, type, steps];
 }

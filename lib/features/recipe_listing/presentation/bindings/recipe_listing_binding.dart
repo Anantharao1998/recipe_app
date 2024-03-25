@@ -1,5 +1,4 @@
 import 'package:recipe_app/dependency_injection.dart';
-import 'package:recipe_app/features/recipe_listing/data/repositories/recipe_listing_repo.dart';
 import 'package:recipe_app/features/recipe_listing/recipe_listing.dart';
 
 /// Recipe bindings

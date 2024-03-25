@@ -5,6 +5,8 @@ library;
 class AppValues {
   AppValues._();
 
+  static const double doublePoint45 = 0.45;
+  static const double doublePoint65 = 0.65;
   static const double doublePoint_1 = 0.1;
   static const double doublePoint_2 = 0.2;
   static const double doublePoint_3 = 0.3;
@@ -15,6 +17,7 @@ class AppValues {
   static const double double_1 = 1;
   static const double double_10 = 10;
   static const double double_100 = 100;
+  static const double double_12 = 12;
   static const double double_125 = 125;
   static const double double_140 = 140;
   static const double double_15 = 15;
@@ -23,6 +26,8 @@ class AppValues {
   static const double double_175 = 175;
   static const double double_20 = 20;
   static const double double_200 = 200;
+  static const double double_22 = 22;
+  static const double double_24 = 24;
   static const double double_25 = 25;
   static const double double_28 = 28;
   static const double double_3 = 3;

@@ -13,6 +13,9 @@ class NavigationService {
     final Object? args,
   }) =>
       _navigationKey.currentState!.pushNamed(routeName, arguments: args);
+
+  /// Pop the current screen
+  void pop() => _navigationKey.currentState!.pop();
 }
 
 /// Global instane of navigation service
