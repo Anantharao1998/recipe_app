@@ -34,4 +34,9 @@ class RecipeListingRepository extends HiveService {
       item.toJson(),
     );
   }
+
+  /// Delete recipe
+  Future<void> deleteRecipe(final int index) async {
+    await deleteData(index);
+  }
 }

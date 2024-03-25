@@ -37,12 +37,21 @@ class RecipeTile extends StatelessWidget {
               : const Icon(
                   Icons.image_not_supported_outlined,
                 ),
-          trailing: Column(
-            children: <Widget>[
-              const Icon(Icons.edit).onTap(onTap: () => onUpdate.call()),
-              const Spacer(),
-              const Icon(Icons.delete).onTap(onTap: () => onDelete.call()),
-            ],
+          trailing: Padding(
+            padding: const EdgeInsets.all(AppValues.double_5),
+            child: Column(
+              children: <Widget>[
+                const Icon(
+                  Icons.edit,
+                  size: AppValues.double_20,
+                ).onTap(onTap: () => onUpdate.call()),
+                const Spacer(),
+                const Icon(
+                  Icons.delete,
+                  size: AppValues.double_20,
+                ).onTap(onTap: () => onDelete.call()),
+              ],
+            ),
           ),
         ),
       );

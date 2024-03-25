@@ -57,7 +57,6 @@ class RecipeListingController extends BaseController {
       (final List<RecipeInfo> result) {
         if (selectedRecipe == null) {
           if (masterRecipeList.isEmpty) {
-
             masterRecipeList.addAll(result);
           }
 
@@ -144,5 +143,12 @@ class RecipeListingController extends BaseController {
     selectedAddRecipe = name;
 
     notifyListeners();
+  }
+
+  /// Delete recipe
+  Future<void> deleteRecipe(final int index) async {
+    await repository.deleteRecipe(index);
+
+    await getRecipes();
   }
 }

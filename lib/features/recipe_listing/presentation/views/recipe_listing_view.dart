@@ -44,8 +44,8 @@ class RecipeListingView extends BaseView<RecipeListingController> {
                         ) =>
                             RecipeTile(
                           recipe: controller.recipeList[index],
-                          onDelete: () {
-                            // TODO: Delete recipe
+                          onDelete: () async {
+                            await controller.deleteRecipe(index);
                           },
                           onUpdate: () {
                             // TODO: Update recipe
